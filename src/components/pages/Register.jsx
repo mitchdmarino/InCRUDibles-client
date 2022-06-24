@@ -19,6 +19,7 @@ export default function Register({ currentAccount, setCurrentAccount }) {
         email,
         password,
       };
+
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/account/register`,
         reqBody

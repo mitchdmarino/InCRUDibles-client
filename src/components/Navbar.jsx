@@ -1,35 +1,36 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-export default function Navbar( {currentUser, handleLogout} ) {
-    const loggedIn = (
-        <>
-            {/* if the user is logged out .. */}
-            <Link to='/'>
-                <span onClick={handleLogout}>Logout</span>
-            </Link>{' | '}
-            <Link to='/profile'>
-                Profile
-            </Link>
-        </>
-    )
+export default function Navbar({ currentAccount, handleLogout }) {
+  const loggedIn = (
+    <>
+      {/* if the Account is logged in .. */}
+      <Link to="/">
+        <span onClick={handleLogout}>Logout</span>
+      </Link>
+      {" | "}
+      <Link to="/profileselection">Profile Selection</Link>
+      {" | "}
+      <Link to="/details">Account Details</Link>
+      {" | "}
+      <Link to="/taskspage">Tasks</Link>
+    </>
+  );
 
-    const loggedOut = (
-        <>
-            {/* if the user is not logged in  */}
-            <Link to='/register'>Register</Link>{' | '}
-            <Link to='/login'>Login</Link>
-        </>
-    )
-    return (
-        <nav>
-            {/* user always sees this section */}
-            <Link to='/'>
-                <p>User App</p>
-            </Link>
-            {
-                currentUser ? 
-                loggedIn: loggedOut
-            }
-        </nav>
-    )
+  const loggedOut = (
+    <>
+      {/* if the Account is not logged in  */}
+      <Link to="/register">Register</Link>
+      {" | "}
+      <Link to="/login">Login</Link>
+    </>
+  );
+  return (
+    <nav>
+      {/* Account always sees this section */}
+      <Link to="/">
+        <p>Account App</p>
+      </Link>
+      {currentAccount ? loggedIn : loggedOut}
+    </nav>
+  );
 }
