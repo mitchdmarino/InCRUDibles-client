@@ -5,17 +5,16 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import Welcome from "./components/pages/Welcome";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
-
 import Navbar from "./components/Navbar";
 import jwt_decode from "jwt-decode";
 import "./App.css";
 import TasksPage from "./components/pages/TasksPage";
 import ProfileSelection from "./components/pages/ProfileSelection";
 import Details from "./components/pages/Details";
+import axios from "axios";
 
 function App() {
   // the currently logged in user will be stored in state
@@ -45,6 +44,17 @@ function App() {
       // set the Account in app state to null
       setCurrentAccount(null);
     }
+  };
+  const handleSubmit = (e, form, setForm) => {
+    e.preventDefault();
+    axios
+      .put(`${process.env.REACT_APP_SERVER_URL}/bounties/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setBounty(response.data); // addd updated bounty to state
+        setShowForm(false); // hide form
+      })
+      .catch(console.warn);
   };
   return (
     <Router>
@@ -95,6 +105,7 @@ function App() {
             path="/details"
             element={
               <Details
+                initialForm={{ name: "", color: "" }}
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
               />
