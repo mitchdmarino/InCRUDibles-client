@@ -20,6 +20,8 @@ import Details from "./components/pages/Details";
 function App() {
   // the currently logged in user will be stored in state
   const [currentAccount, setCurrentAccount] = useState(null);
+  const [currentProfile, setCurrentProfile] = useState("");
+  const [tasks, setTasks] = useState([]);
 
   // useEffect -- if the Account navigates away from the page, we will log them back in
   useEffect(() => {
@@ -102,6 +104,8 @@ function App() {
             path="/profileselection"
             element={
               <ProfileSelection
+                currentProfile={currentProfile}
+                setCurrentProfile={setCurrentProfile}
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
               />
