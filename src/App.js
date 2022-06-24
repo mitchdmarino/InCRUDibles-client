@@ -2,70 +2,115 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
-}
-from 'react-router-dom'
-import { useState, useEffect } from 'react'
+  Navigate,
+} from "react-router-dom";
+import { useState, useEffect } from "react";
 
-import Welcome from './components/pages/Welcome'
-import Register from './components/pages/Register'
-import Login from './components/pages/Login'
-import Profile from './components/pages/Profile'
-import Navbar from './components/Navbar'
-import jwt_decode from 'jwt-decode'
-import './App.css';
+import Welcome from "./components/pages/Welcome";
+import Register from "./components/pages/Register";
+import Login from "./components/pages/Login";
+
+import Navbar from "./components/Navbar";
+import jwt_decode from "jwt-decode";
+import "./App.css";
+import TasksPage from "./components/pages/TasksPage";
+import ProfileSelection from "./components/pages/ProfileSelection";
+import Details from "./components/pages/Details";
 
 function App() {
-  // the currently logged in user will be stored in state 
-  const [currentUser, setCurrentUser] = useState(null)
+  // the currently logged in user will be stored in state
+  const [currentAccount, setCurrentAccount] = useState(null);
 
-  // useEffect -- if the user navigates away from the page, we will log them back in
+  // useEffect -- if the Account navigates away from the page, we will log them back in
   useEffect(() => {
-    // check to see if token is in storage 
-    const token = localStorage.getItem('jwt')
+    // check to see if token is in storage
+    const token = localStorage.getItem("jwt");
     if (token) {
-      // if so, we will decode it and set the user in app state 
-      setCurrentUser(jwt_decode(token))
+      // if so, we will decode it and set the Account in app state
+      setCurrentAccount(jwt_decode(token));
     } else {
-      setCurrentUser(null)
+      setCurrentAccount(null);
     }
 
-    // if so, we will decode it and set the user in app state
-  },[])
-  // event handler to log the user out when needed 
+    // if so, we will decode it and set the Account in app state
+  }, []);
+  // event handler to log the Account out when needed
   const handleLogout = () => {
-    // check to see if a token exists in local storage 
-    if (localStorage.getItem('jwt')) {
-      // if so, delete 
-      localStorage.removeItem('jwt')
-      // set the user in app state to null 
-      setCurrentUser(null)
+    // check to see if a token exists in local storage
+    if (localStorage.getItem("jwt")) {
+      // if so, delete
+      localStorage.removeItem("jwt");
+      // set the Account in app state to null
+      setCurrentAccount(null);
     }
-  }
+  };
   return (
     <Router>
       <header>
-        <Navbar currentUser={currentUser} handleLogout={handleLogout} />
+        <Navbar currentAccount={currentAccount} handleLogout={handleLogout} />
       </header>
       <main>
         <Routes>
-          <Route 
-            path='/' 
-            element={<Welcome currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
-          <Route 
-            path='/register' 
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
-          <Route 
-            path='/login' 
-            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
+          <Route
+            path="/"
+            element={
+              <Welcome
+                currentAccount={currentAccount}
+                setCurrentAccount={setCurrentAccount}
+              />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <Register
+                currentAccount={currentAccount}
+                setCurrentAccount={setCurrentAccount}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Login
+                currentAccount={currentAccount}
+                setCurrentAccount={setCurrentAccount}
+              />
+            }
+          />
           {/* TODO: conditionally render auth locked routes */}
-          <Route 
-            path='/profile' 
-            element={currentUser ?  <Profile currentUser={currentUser} handleLogout={handleLogout} setCurrentUser={setCurrentUser}/>: <Navigate to='/login'/>}/>
+
+          <Route
+            path="/taskspage"
+            element={
+              <TasksPage
+                currentAccount={currentAccount}
+                setCurrentAccount={setCurrentAccount}
+              />
+            }
+          />
+          <Route
+            path="/details"
+            element={
+              <Details
+                currentAccount={currentAccount}
+                setCurrentAccount={setCurrentAccount}
+              />
+            }
+          />
+          <Route
+            path="/profileselection"
+            element={
+              <ProfileSelection
+                currentAccount={currentAccount}
+                setCurrentAccount={setCurrentAccount}
+              />
+            }
+          />
         </Routes>
       </main>
     </Router>
-  )
+  );
 }
 
 export default App;
