@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# InCRUDibles Project Name TBD
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description 
 
-## Available Scripts
+(inCRUDibles proj, name TBD) is a task tracking app for groups. Create an account for your group, use profiles for the different members of the group, and complete shared tasks. Users are able to create tasks inside the app for the whole group to track. Once a user has completed a task, they can mark it as such. Users will also be able to edit and delete tasks as they see fit.
 
-In the project directory, you can run:
+Users will be able to mark who started and completed tasks based on profiles assigned to the account
 
-### `npm start`
+## MODELS/ERD 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![](https://i.imgur.com/1uAeXrQ.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## RESTful Routing Chart
 
-### `npm test`
+![](https://i.imgur.com/f4TBzbt.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## WireFrames
 
-### `npm run build`
+### Home page Path: '/'
+![](https://i.imgur.com/oHdSTP2.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Task page Path: '/'
+![](https://i.imgur.com/WTNi5KC.png?1)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Account page Path: '/'
+![](https://i.imgur.com/3fm279k.png?1)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## User Stories
 
-### `npm run eject`
+*  As an unregistered user, I would like to sign up with email and password.
+*  As a registered user, I would like to sign in with email and password.
+*  As a signed in user, I would like to sign out.
+* As a signed in user, I would like tO be able to check off items on the todo list.
+* As a signed in user, I would like tO see if other account members have completed a task.
+* As a signed in user, I would like tO have multiple styles of tasks ( check boxes,  toggle switches, input boxes).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## GOALS 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### MVP 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. User is able to Login to the site and logout of the site.
+2. An Account can have multiple profiles- Each with an icon (think Netflix)
+3. A user can have create items for their todo list.
+4. A user can update items from their todo list.
+5. A user can delete items from their todo list.
+6. A user can complete items from their todo list.
+7. user's can see if a member of their account has made any changes.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### STRETCH 🙆‍♂️
 
-## Learn More
+1. Tasks can have deadlines / are time sensitive.
+2. The app has an "I'm working on it" tab.
+3. You can assign a task to a member of your group.
+4. the account's Users have  icons that are images.
+5. Creating A highly stylized site!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
