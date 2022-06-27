@@ -5,7 +5,7 @@ export default function ProfileSelection({profiles, setProfiles}) {
   // profiles --- array [profile1, profile2, ...]
   const profileList = profiles.map(profile => {
     return (
-      <Profile profile={profile} setProfiles={setProfiles} />
+      <Profile profile={profile} setProfiles={setProfiles} showEdit={false} />
     )
   })
   return (

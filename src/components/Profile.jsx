@@ -2,9 +2,9 @@ import ProfileForm from "./ProfileForm";
 import axios from "axios";
 import {useState} from 'react'
 
-export default function Profile ({profile, setProfiles}) {
+export default function Profile ({profile, setProfiles, showEdit}) {
   const [showForm, setShowForm] = useState(false)
-
+  const [showEditDiv, setShowEditDiv] = useState(false)
   const handleEditProfile = (e, form, setForm) => {
     e.preventDefault()
     const token = localStorage.getItem("jwt");
@@ -36,23 +36,29 @@ export default function Profile ({profile, setProfiles}) {
     
   }
     return (
-        <div className="border-solid border-black border-4">
+        <div style={{backgroundColor: `${profile.color}`}} className={`border-solid border-black border-4  w-[200px] mx-auto m-10 p-2 `}>
         <h3>{profile.name}</h3>
         <p>color: {profile.color}</p>
-        <button 
-                onClick={()=> setShowForm(!showForm)}
-            >
-                {showForm ? 'Cancel': 'Edit'}
-        </button>
-       
         {
-          showForm ? 
-          <ProfileForm key={`editProfileForm-${profile._id}`} initialForm={{name:profile.name, color: profile.color}} handleSubmit={handleEditProfile}/>:
-          ''
-        }
-         {
-          showForm ?
-          <button onClick={handleDeleteProfile}>Delete</button>: ''
+          showEdit ? 
+          <div className="edit-container">
+          <button 
+                  onClick={()=> setShowForm(!showForm)}
+              >
+                  {showForm ? 'Cancel': 'Edit'}
+          </button>
+        
+          {
+            showForm ? 
+            <ProfileForm key={`editProfileForm-${profile._id}`} initialForm={{name:profile.name, color: profile.color}} handleSubmit={handleEditProfile}/>:
+            ''
+          }
+          {
+            showForm ?
+            <button onClick={handleDeleteProfile}>Delete</button>: ''
+          }
+        </div> : 
+        ''
         }
         
       </div>
