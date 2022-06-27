@@ -1,11 +1,11 @@
 import Profile from '../Profile'
 
-export default function ProfileSelection({profiles, setProfiles}) {
-  console.log(profiles)
+export default function ProfileSelection({profiles, setProfiles, currentProfile, setCurrentProfile}) {
+  
   // profiles --- array [profile1, profile2, ...]
   const profileList = profiles.map(profile => {
     return (
-      <Profile profile={profile} setProfiles={setProfiles} showEdit={false} />
+      <Profile key={`profile - ${profile._id}`}setCurrentProfile={setCurrentProfile} profile={profile} setProfiles={setProfiles} showEdit={false} />
     )
   })
   return (

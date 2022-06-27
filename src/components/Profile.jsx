@@ -1,8 +1,10 @@
 import ProfileForm from "./ProfileForm";
 import axios from "axios";
 import {useState} from 'react'
+import { useNavigate } from "react-router-dom";
 
-export default function Profile ({profile, setProfiles, showEdit}) {
+export default function Profile ({profile, setProfiles, showEdit , setCurrentProfile }) {
+  let navigate = useNavigate()
   const [showForm, setShowForm] = useState(false)
   const [showEditDiv, setShowEditDiv] = useState(false)
   const handleEditProfile = (e, form, setForm) => {
@@ -35,8 +37,20 @@ export default function Profile ({profile, setProfiles, showEdit}) {
       
     
   }
+
+  const handleProfileSelect = (selectedProfile) => {
+    setCurrentProfile(selectedProfile)
+    navigate("/taskspage", { replace: true })
+
+  } 
+  const handleNothing = () => {
+    console.log('nothing')
+  }
+
     return (
-        <div style={{backgroundColor: `${profile.color}`}} className={`border-solid border-black border-4  w-[200px] mx-auto m-10 p-2 `}>
+        <div onClick={showEdit ? handleNothing : () => handleProfileSelect(profile)}
+          style={{backgroundColor: `${profile.color}`}} className={`border-solid border-black border-4  w-[200px] mx-auto m-10 p-2 `}>
+        
         <h3>{profile.name}</h3>
         <p>color: {profile.color}</p>
         {
