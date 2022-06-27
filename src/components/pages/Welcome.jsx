@@ -21,7 +21,7 @@ export default function Welcome() {
             <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white white-space: nowrap p-2">
               Ready to join?{" "}
               <Link
-                className="hover:bg-white hover:text-blue-600 text-2xl text-white p-0 dark:text-white display: inline-block  rounded-full p-2.5 bg-blue-600 shadow-lg shadow-indigo-500/40"
+                className="hover:bg-white hover:text-blue-600 text-2xl text-white p-0 dark:text-white display: inline-block  rounded-full p-2.5 bg-blue-600 shadow-lg shadow-indigo-500/40 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
                 to="/register"
               >
                 {" "}

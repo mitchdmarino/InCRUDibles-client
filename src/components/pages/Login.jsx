@@ -88,7 +88,7 @@ export default function Login({ currentAccount, setCurrentAccount }) {
               <div className="pt-10 h-24">
                 <button
                   type="submit"
-                  className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-3 bg-blue-600 shadow-lg shadow-indigo-500/40 w-48"
+                  className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-3 bg-blue-600 shadow-lg shadow-indigo-500/40 w-48 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
                 >
                   {" "}
                   Login{" "}
