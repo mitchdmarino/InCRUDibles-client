@@ -20,7 +20,9 @@ function App() {
   // the currently logged in user will be stored in state
   const [currentAccount, setCurrentAccount] = useState(null);
   const [currentProfile, setCurrentProfile] = useState("");
+  const [profiles, setProfiles] = useState([])
   const [tasks, setTasks] = useState([]);
+
 
   // useEffect -- if the Account navigates away from the page, we will log them back in
   useEffect(() => {
@@ -28,13 +30,34 @@ function App() {
     const token = localStorage.getItem("jwt");
     if (token) {
       // if so, we will decode it and set the Account in app state
-      setCurrentAccount(jwt_decode(token));
+      const loggedInAccount = jwt_decode(token)
+      setCurrentAccount(loggedInAccount)
+      console.log(loggedInAccount)
+      
+      //  make the auth headers
+      const options = {
+        headers: {
+          Authorization: token,
+        },
+      };
+
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/account/${loggedInAccount.id}`, options)
+        .then(response => {
+          setProfiles(response.data.profiles)
+          setTasks(response.data.tasks)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      
+     
     } else {
       setCurrentAccount(null);
     }
+  },[]);
 
-    // if so, we will decode it and set the Account in app state
-  }, []);
+
+
   // event handler to log the Account out when needed
   const handleLogout = () => {
     // check to see if a token exists in local storage
@@ -45,17 +68,17 @@ function App() {
       setCurrentAccount(null);
     }
   };
-  const handleSubmit = (e, form, setForm) => {
-    e.preventDefault();
-    axios
-      .put(`${process.env.REACT_APP_SERVER_URL}/bounties/${id}`)
-      .then((response) => {
-        console.log(response.data);
-        setBounty(response.data); // addd updated bounty to state
-        setShowForm(false); // hide form
-      })
-      .catch(console.warn);
-  };
+  // const handleSubmit = (e, form, setForm) => {
+  //   e.preventDefault();
+  //   axios
+  //     .put(`${process.env.REACT_APP_SERVER_URL}/bounties/${id}`)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setBounty(response.data); // addd updated bounty to state
+  //       setShowForm(false); // hide form
+  //     })
+  //     .catch(console.warn);
+  // };
   return (
     <Router>
       <header>
@@ -104,12 +127,13 @@ function App() {
           <Route
             path="/details"
             element={
+              currentAccount ? 
               <Details
                 initialForm={{ name: "", color: "" }}
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
-              />
-            }
+              /> :
+              <Navigate to='/login'/>}
           />
           <Route
             path="/profileselection"

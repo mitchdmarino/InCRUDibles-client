@@ -41,7 +41,7 @@ export default function Login({ currentAccount, setCurrentAccount }) {
 
   // conditionally render a navigate component
   if (currentAccount) {
-    return <Navigate to="/profile" />;
+    return <Navigate to="/details" />;
   }
 
   return (
