@@ -3,10 +3,21 @@ import {useState} from 'react'
 import React from "react";
 
 export default function ProfileForm() {
-  // const [form, setForm] = useState({ initialForm });
+  const initialForm = {
+    name: '',
+    color: ''
+
+  }
+  const [form, setForm] = useState(initialForm);
+
+  const handleCreateProfile = (e, form, setForm) => {
+    e.preventDefault()
+    console.log(form)
+  }
+
   return (
     <div>
-      {/* <form onSubmit={(e) => submitHandler(e, form, setForm)}>
+      <form onSubmit={(e) => handleCreateProfile(e, form, setForm)}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -29,7 +40,7 @@ export default function ProfileForm() {
           <option value="yellow">yellow</option>
         </select>
         <button type="submit">Submit</button>
-      </form> */}
+      </form>
     </div>
   );
 }

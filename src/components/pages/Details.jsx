@@ -86,6 +86,9 @@ export default function Details({ currentAccount, handleLogout, initialForm }) {
       </h2>
 
   <h3>{msg}</h3>
+
+  <h3>Add a new profile</h3>
+  <ProfileForm/>
     </div>
   );
 }

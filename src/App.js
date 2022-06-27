@@ -121,6 +121,8 @@ function App() {
               <TasksPage
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
+                tasks={tasks}
+                profiles={profiles}
               />
             }
           />
