@@ -145,6 +145,8 @@ function App() {
               <ProfileSelection
                 currentProfile={currentProfile}
                 setCurrentProfile={setCurrentProfile}
+                profiles={profiles}
+                setProfiles={setProfiles}
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
               />
