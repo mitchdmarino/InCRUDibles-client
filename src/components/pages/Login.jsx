@@ -53,9 +53,11 @@ export default function Login({ currentAccount, setCurrentAccount }) {
         <body>
           <div>
             <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-40">
-              Login
+              Welcome Back!
             </h1>
-            <p className="text-white tracking-tight leading-6 text-2xl p-8">Welcome Back!</p>
+            <p className="text-white tracking-tight leading-6 text-2xl p-8">
+              Login to your Account
+            </p>
             <p> {msg}</p>
             <form onSubmit={handleSubmit}>
               <div className="pt-10 h-24">
@@ -71,7 +73,7 @@ export default function Login({ currentAccount, setCurrentAccount }) {
                 />
               </div>
 
-              <div className="pt-10 h-24">
+              <div className="pt-6 h-24">
                 <label htmlFor="password"></label>
                 <input
                   className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
@@ -86,15 +88,16 @@ export default function Login({ currentAccount, setCurrentAccount }) {
               <div className="pt-10 h-24">
                 <button
                   type="submit"
-                  className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-2.5 bg-blue-600 shadow-lg shadow-indigo-500/40"
+                  className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-3 bg-blue-600 shadow-lg shadow-indigo-500/40 w-48"
                 >
-                  Login
+                  {" "}
+                  Login{" "}
                 </button>
               </div>
 
               <p className="text-white tracking-tight leading-6 text-2xl pt-16 h-24">
                 Don't have an account yet? No worries!
-                <Link to="/login" className="text-blue-800 hover:text-white">
+                <Link to="/register" className="text-blue-800 hover:text-white">
                   {"  "}
                   Become a member.
                 </Link>
