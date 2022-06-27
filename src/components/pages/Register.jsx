@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 export default function Register({ currentAccount, setCurrentAccount }) {
   // state for the controlled form
@@ -48,39 +48,84 @@ export default function Register({ currentAccount, setCurrentAccount }) {
   }
 
   return (
-    <div>
-      <h1>Register</h1>
-      <p> {msg}</p>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          placeholder="example@domain.com"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label htmlFor="email">email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value={email}
-          placeholder="example@domain.com"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">password</label>
-        <input
-          type="text"
-          name="password"
-          id="password"
-          value={password}
-          placeholder="********"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Register</button>
-      </form>
-    </div>
-  );
+    <html>
+      <main class="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
+        <head>
+          <title>Register to CheckMate</title>
+        </head>
+        <body>
+          <div>
+            <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-16 h-48">
+              Create Account
+            </h1>
+            <p className="text-white tracking-tight leading-6 text-2xl">
+              Enter your Name, Email, and Password to sign up.
+              <Link to="/login" className="text-blue-800 hover:text-white">
+                {"  "}
+                Already have an account with us?
+              </Link>
+            </p>
+            <p className="text-white tracking-tight leading-6 text-2xl">
+              {msg}
+            </p>
+
+            <form onSubmit={handleSubmit}>
+              <div className="pt-16 h-24">
+                <label htmlFor="name"></label>
+                <input
+                  className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={name}
+                  placeholder="Username"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <br></br>
+              <div className="pt-10 h-22">
+                <label htmlFor="email"></label>
+                <input
+                  className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
+                  type="text"
+                  name="email"
+                  id="email"
+                  value={email}
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <br></br>
+              <div className="pt-7 h-20">
+                <label htmlFor="password"></label>
+                <input
+                  className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
+                  type="text"
+                  name="password"
+                  id="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <br></br>
+
+              <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white p-8">
+                Are you ready to take on today's challenges with excitement?
+              </h1>
+
+              <button
+                type="submit"
+                className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-2.5 bg-blue-600 shadow-lg shadow-indigo-500/40"
+              >
+                Register
+              </button>
+
+              <h1 className="p-20"></h1>
+            </form>
+          </div>
+        </body>
+      </main>
+    </html>
+  )
 }

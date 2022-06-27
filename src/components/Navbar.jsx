@@ -66,7 +66,7 @@ export default function Navbar({ currentAccount, handleLogout }) {
   rounded={true}
 >
   <Nav.Brand href="/">
-    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+    <span className="self-center whitespace-nowrap text-xl font-semibold text-blue-700">
       Incrudibles
     </span>
   </Nav.Brand>
