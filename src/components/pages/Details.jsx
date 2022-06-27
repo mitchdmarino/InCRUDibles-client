@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Profile from "../Profile";
 import ProfileForm from "../ProfileForm";
 
 
@@ -44,6 +45,13 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
       </h2>
 
   <h3>{msg}</h3>
+
+  <h2>Profiles</h2>
+      {profileList}  
+      <h3>Add a new profile</h3>
+      <ProfileForm initialForm={{name: '', color:'red'}} handleSubmit={handleCreateProfile} setProfiles={setProfiles}/>
+  
+
     </div>
   );
 }

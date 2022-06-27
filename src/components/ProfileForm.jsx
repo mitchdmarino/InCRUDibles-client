@@ -1,12 +1,12 @@
 import {useState} from 'react'
-
+import axios from 'axios'
 import React from "react";
-
-export default function ProfileForm() {
-  // const [form, setForm] = useState({ initialForm });
+export default function ProfileForm({handleSubmit, initialForm}) {
+  
+  const [form, setForm] = useState(initialForm);
   return (
     <div>
-      {/* <form onSubmit={(e) => submitHandler(e, form, setForm)}>
+      <form onSubmit={(e) => handleSubmit(e, form, setForm)}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -29,7 +29,7 @@ export default function ProfileForm() {
           <option value="yellow">yellow</option>
         </select>
         <button type="submit">Submit</button>
-      </form> */}
+      </form>
     </div>
   );
 }
