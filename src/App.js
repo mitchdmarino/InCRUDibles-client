@@ -20,9 +20,8 @@ function App() {
   // the currently logged in user will be stored in state
   const [currentAccount, setCurrentAccount] = useState(null);
   const [currentProfile, setCurrentProfile] = useState("");
-  const [profiles, setProfiles] = useState([])
+  const [profiles, setProfiles] = useState([]);
   const [tasks, setTasks] = useState([]);
-
 
   // useEffect -- if the Account navigates away from the page, we will log them back in
   useEffect(() => {
@@ -30,10 +29,10 @@ function App() {
     const token = localStorage.getItem("jwt");
     if (token) {
       // if so, we will decode it and set the Account in app state
-      const loggedInAccount = jwt_decode(token)
-      setCurrentAccount(loggedInAccount)
-      console.log(loggedInAccount)
-      
+      const loggedInAccount = jwt_decode(token);
+      setCurrentAccount(loggedInAccount);
+      console.log(loggedInAccount);
+
       //  make the auth headers
       const options = {
         headers: {
@@ -41,22 +40,22 @@ function App() {
         },
       };
 
-      axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/account/${loggedInAccount.id}`, options)
-        .then(response => {
-          setProfiles(response.data.profiles)
-          setTasks(response.data.tasks)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-      
-     
+      axios
+        .get(
+          `${process.env.REACT_APP_SERVER_URL}/api-v1/account/${loggedInAccount.id}`,
+          options
+        )
+        .then((response) => {
+          setProfiles(response.data.profiles);
+          setTasks(response.data.tasks);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       setCurrentAccount(null);
     }
-  },[]);
-
-
+  }, []);
 
   // event handler to log the Account out when needed
   const handleLogout = () => {
@@ -120,20 +119,31 @@ function App() {
             element={
               <TasksPage
                 currentAccount={currentAccount}
-                setCurrentAccount={setCurrentAccount}
+                tasks={tasks}
+                profiles={profiles}
+                initialForm={{ description: "", completed: false }}
+
               />
             }
           />
           <Route
             path="/details"
             element={
-              currentAccount ? 
-              <Details
-                initialForm={{ name: "", color: "" }}
-                currentAccount={currentAccount}
-                setCurrentAccount={setCurrentAccount}
-              /> :
-              <Navigate to='/login'/>}
+
+
+              currentAccount ? (
+                <Details
+                  initialForm={{ name: "", color: "" }}
+                  currentAccount={currentAccount}
+                  setCurrentAccount={setCurrentAccount}
+                  profiles={profiles}
+                  setProfiles={setProfiles}
+                />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+
           />
           <Route
             path="/profileselection"
@@ -141,6 +151,8 @@ function App() {
               <ProfileSelection
                 currentProfile={currentProfile}
                 setCurrentProfile={setCurrentProfile}
+                profiles={profiles}
+                setProfiles={setProfiles}
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
               />

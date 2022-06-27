@@ -2,78 +2,36 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileForm from "../ProfileForm";
 
-export default function Details({ currentAccount, handleLogout, initialForm }) {
+
+export default function Details({ currentAccount, handleLogout, profiles, setProfiles }) {
+  // are my changes showign?
   // state for the secret message (aka Account privileged data )
   const [msg, setMsg] = useState("");
-  // useEffect for getting the Account data and checking auth
-  useEffect(() => {
-    const getMessage = async () => {
-      try {
-        // get the token from local storage
-        const token = localStorage.getItem("jwt");
-        // make the auth headers
-        const options = {
-          headers: {
-            Authorization: token,
-          },
-        };
-        // hit the auth locked endpoint
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/api-v1/account/auth-locked`,
-          options
-        );
-        // set the secret Account message in state
-        setMsg(response.data.msg);
-      } catch (err) {
-        // if the error is 401, the auth failed
-        console.warn(err);
-        if (err.response) {
-          if (err.response.status === 401) {
-            handleLogout();
-          }
-        }
-      }
-    };
-    getMessage();
-  });
-  // const handleEdit = (e, form, setForm) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`)
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setBounty(response.data); // addd updated bounty to state
-  //       setShowForm(false); // hide form
-  //     })
-  //     .catch(console.warn);
-  // };
-  // const handleCreate = async (e, form, setForm) => {
-  //   e.preventDefault();
-  //   // axios to POST a new bounty
-  //   console.log("the form data is:", form);
-  //   try {
-  //     const response = await axios.post(
-  //       `${process.env.REACT_APP_SERVER_URL}/api-v1/profile`,
-  //       form
-  //     );
 
-  //     setBounties([...bounties, response.data]);
+  const profileList = profiles.map(profile => {
+    return (
+      <Profile key={`${profile._id}`} profile={profile} setProfiles={setProfiles} />
+    )
+  })
 
-  //     setForm({
-  //       name: "",
-  //       color: "",
-  //     });
-  //     setErr("");
-  //   } catch (err) {
-  //     console.warn("submit error:", err);
-  //     if (err.response) {
-  //       if (err.response.status === 400) {
-  //         // this error is a validation error from our backend
-  //         setErr(err.response.data.msg);
-  //       }
-  //     }
-  //   }
-  // };
+  const handleCreateProfile = (e, form, setForm) => {
+    e.preventDefault()
+    const token = localStorage.getItem("jwt");
+    const options = {
+      headers: {
+        Authorization: token,
+      },
+    }
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`, form ,options)
+      .then(response => {
+        console.log(response)
+        setProfiles(response.data.profiles)
+      })
+    setForm({
+      name: '', 
+      color: 'red'
+    })
+  }
 
   return (
     <div>
