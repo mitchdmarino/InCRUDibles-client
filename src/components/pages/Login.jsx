@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 export default function Login({ currentAccount, setCurrentAccount }) {
   // state for the controlled form
@@ -45,30 +45,69 @@ export default function Login({ currentAccount, setCurrentAccount }) {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <p> {msg}</p>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value={email}
-          placeholder="example@domain.com"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">password</label>
-        <input
-          type="text"
-          name="password"
-          id="password"
-          value={password}
-          placeholder="********"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
+    <html>
+      <main class="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
+        <head>
+          <title>Login to CheckMate</title>
+        </head>
+        <body>
+          <div>
+            <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-40">
+              Welcome Back!
+            </h1>
+            <p className="text-white tracking-tight leading-6 text-2xl p-8">
+              Login to your Account
+            </p>
+            <p> {msg}</p>
+            <form onSubmit={handleSubmit}>
+              <div className="pt-10 h-24">
+                <label htmlFor="email"></label>
+                <input
+                  className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
+                  type="text"
+                  name="email"
+                  id="email"
+                  value={email}
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              <div className="pt-6 h-24">
+                <label htmlFor="password"></label>
+                <input
+                  className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
+                  type="text"
+                  name="password"
+                  id="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className="pt-10 h-24">
+                <button
+                  type="submit"
+                  className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-3 bg-blue-600 shadow-lg shadow-indigo-500/40 w-48 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+                >
+                  {" "}
+                  Login{" "}
+                </button>
+              </div>
+
+              <p className="text-white tracking-tight leading-6 text-2xl pt-16 h-24">
+                Don't have an account yet? No worries!
+                <Link to="/register" className="text-blue-800 hover:text-white">
+                  {"  "}
+                  Become a member.
+                </Link>
+              </p>
+
+              <h1 className="p-40"></h1>
+            </form>
+          </div>
+        </body>
+      </main>
+    </html>
+  )
 }
