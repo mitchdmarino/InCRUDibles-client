@@ -27,16 +27,22 @@ export default function Navbar({ currentAccount, handleLogout }) {
   const loggedOut = (
     <>
       {/* if the Account is not logged in  */}
-      
-        <Link className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" to="/register">Register</Link>
-      
 
-      
-        <Link className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" to="/login">Login</Link>
-      
+      <Link
+        className="hover:text-blue-500 font-semibold block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        to="/register"
+      >
+        Register
+      </Link>
 
+      <Link
+        className="hover:text-blue-500 font-semibold block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        to="/login"
+      >
+        Login
+      </Link>
     </>
-  );
+  )
   return (
     // <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
     //   <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -58,24 +64,25 @@ export default function Navbar({ currentAccount, handleLogout }) {
     //         {currentAccount ? loggedIn : loggedOut}
     //       </ul>
     //     </div>
-        
+
     //   </div>
     // </nav>
-    <Nav
-  fluid={true}
-  rounded={true}
->
-  <Nav.Brand href="/">
-    <span className="self-center whitespace-nowrap text-xl font-semibold text-blue-700">
-      Incrudibles
-    </span>
-  </Nav.Brand>
-  <Nav.Toggle />
-  <Nav.Collapse>
-    <Link className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" to="/">Home</Link>
-    {currentAccount ? loggedIn : loggedOut}
-  </Nav.Collapse>
-</Nav>
-
-  );
+    <Nav fluid={true} rounded={true}>
+      <Nav.Brand href="/">
+        <span className="hover:text-blue-500 self-center whitespace-nowrap text-xl font-semibold text-blue-700 p-4">
+          Incrudibles
+        </span>
+      </Nav.Brand>
+      <Nav.Toggle />
+      <Nav.Collapse>
+        <Link
+          className="hover:text-blue-500 font-semibold block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+          to="/"
+        >
+          Home
+        </Link>
+        {currentAccount ? loggedIn : loggedOut}
+      </Nav.Collapse>
+    </Nav>
+  )
 }
