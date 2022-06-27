@@ -1,41 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileForm from "../ProfileForm";
+import Profile from '../Profile'
 
-export default function Details({ currentAccount, handleLogout, initialForm }) {
+export default function Details({ currentAccount, handleLogout, profiles, setProfiles }) {
   // state for the secret message (aka Account privileged data )
   const [msg, setMsg] = useState("");
-  // useEffect for getting the Account data and checking auth
-  useEffect(() => {
-    const getMessage = async () => {
-      try {
-        // get the token from local storage
-        const token = localStorage.getItem("jwt");
-        // make the auth headers
-        const options = {
-          headers: {
-            Authorization: token,
-          },
-        };
-        // hit the auth locked endpoint
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/api-v1/account/auth-locked`,
-          options
-        );
-        // set the secret Account message in state
-        setMsg(response.data.msg);
-      } catch (err) {
-        // if the error is 401, the auth failed
-        console.warn(err);
-        if (err.response) {
-          if (err.response.status === 401) {
-            handleLogout();
-          }
-        }
-      }
-    };
-    getMessage();
-  });
+
+  const profileList = profiles.map(profile => {
+    return (
+      <Profile key={`${profile._id}`} profile={profile} setProfiles={setProfiles} />
+    )
+  })
+
   // const handleEdit = (e, form, setForm) => {
   //   e.preventDefault();
   //   axios
@@ -74,6 +51,25 @@ export default function Details({ currentAccount, handleLogout, initialForm }) {
   //     }
   //   }
   // };
+  const handleCreateProfile = (e, form, setForm) => {
+    e.preventDefault()
+    const token = localStorage.getItem("jwt");
+    const options = {
+      headers: {
+        Authorization: token,
+      },
+    }
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`, form ,options)
+      .then(response => {
+        console.log(response)
+        setProfiles(response.data.profiles)
+      })
+    setForm({
+      name: '', 
+      color: 'red'
+    })
+  }
+  
 
   return (
     <div>
@@ -85,7 +81,13 @@ export default function Details({ currentAccount, handleLogout, initialForm }) {
         App:{" "}
       </h2>
 
-  <h3>{msg}</h3>
+      <h3>{msg}</h3>
+
+      <h2>Profiles</h2>
+      {profileList}      
+
+      <h3>Add a new profile</h3>
+      <ProfileForm initialForm={{name: '', color:'red'}} handleSubmit={handleCreateProfile} setProfiles={setProfiles}/>
     </div>
   );
 }

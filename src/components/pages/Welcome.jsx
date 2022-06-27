@@ -8,6 +8,7 @@ export default function Welcome() {
       </head>
       <body>
         <div>
+        <main>
           <h1 className="text-center tracking-tight text-5xl self-center font-semibold dark:text-white">
             Not your average To-Do List.
           </h1>
@@ -57,6 +58,10 @@ export default function Welcome() {
             aliquip ex ea commodo consequat.
           </p>
           <br></br>
+
+            <h1 className="text-6xl">Welcome</h1>
+            
+        </main>
         </div>
       </body>
     </html>
