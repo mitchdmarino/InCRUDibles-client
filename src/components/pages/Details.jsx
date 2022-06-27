@@ -4,6 +4,7 @@ import ProfileForm from "../ProfileForm";
 import Profile from '../Profile'
 
 export default function Details({ currentAccount, handleLogout, profiles, setProfiles }) {
+  // are my changes showign?
   // state for the secret message (aka Account privileged data )
   const [msg, setMsg] = useState("");
 
