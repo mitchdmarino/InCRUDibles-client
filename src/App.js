@@ -134,6 +134,8 @@ function App() {
                 initialForm={{ name: "", color: "" }}
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
+                profiles={profiles}
+                setProfiles={setProfiles}
               /> :
               <Navigate to='/login'/>}
           />

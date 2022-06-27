@@ -1,23 +1,16 @@
 import {useState} from 'react'
+import axios from 'axios'
 
 import React from "react";
 
-export default function ProfileForm() {
-  const initialForm = {
-    name: '',
-    color: ''
-
-  }
+export default function ProfileForm({handleSubmit, initialForm}) {
+  
   const [form, setForm] = useState(initialForm);
 
-  const handleCreateProfile = (e, form, setForm) => {
-    e.preventDefault()
-    console.log(form)
-  }
 
   return (
     <div>
-      <form onSubmit={(e) => handleCreateProfile(e, form, setForm)}>
+      <form onSubmit={(e) => handleSubmit(e, form, setForm)}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
