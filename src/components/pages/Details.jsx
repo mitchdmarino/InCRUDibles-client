@@ -11,7 +11,7 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
 
   const profileList = profiles.map(profile => {
     return (
-      <Profile key={`${profile._id}`} profile={profile} setProfiles={setProfiles} />
+      <Profile key={`${profile._id}`} profile={profile} setProfiles={setProfiles} showEdit={true} />
     )
   })
 
