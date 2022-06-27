@@ -13,44 +13,6 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
     )
   })
 
-  // const handleEdit = (e, form, setForm) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`)
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setBounty(response.data); // addd updated bounty to state
-  //       setShowForm(false); // hide form
-  //     })
-  //     .catch(console.warn);
-  // };
-  // const handleCreate = async (e, form, setForm) => {
-  //   e.preventDefault();
-  //   // axios to POST a new bounty
-  //   console.log("the form data is:", form);
-  //   try {
-  //     const response = await axios.post(
-  //       `${process.env.REACT_APP_SERVER_URL}/api-v1/profile`,
-  //       form
-  //     );
-
-  //     setBounties([...bounties, response.data]);
-
-  //     setForm({
-  //       name: "",
-  //       color: "",
-  //     });
-  //     setErr("");
-  //   } catch (err) {
-  //     console.warn("submit error:", err);
-  //     if (err.response) {
-  //       if (err.response.status === 400) {
-  //         // this error is a validation error from our backend
-  //         setErr(err.response.data.msg);
-  //       }
-  //     }
-  //   }
-  // };
   const handleCreateProfile = (e, form, setForm) => {
     e.preventDefault()
     const token = localStorage.getItem("jwt");
