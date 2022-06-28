@@ -95,6 +95,7 @@ export default function Navbar({ currentAccount, handleLogout }) {
         </Link>
         {currentAccount ? loggedIn : loggedOut}
       </Nav.Collapse>
+      
     </Nav>
   )
 }

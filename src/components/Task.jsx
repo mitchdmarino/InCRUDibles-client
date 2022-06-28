@@ -26,9 +26,12 @@ export default function Task({ task, currentProfile }) {
     );
   };
 
+  const color = task.completed ? 'green' : 'black'
+  
+
   return (
     <ul>
-      <li>
+      <li style={{color: color}}>
         {task.description}{" "}
         <button onClick={handlecompletedTask}>Complete</button>
       </li>
