@@ -38,10 +38,10 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
     <main className="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
       <div>
         <div className="flex justify-between">
-          <div className="text-white tracking-tight leading-6 text-2xl pb-8 h-24 pt-10 flex justify-start pl-8">
+          <div className="text-white tracking-tight leading-6 text-2xl pb-8 h-20 pt-10 flex justify-start pl-8">
             Your Dashboard
           </div>
-          <h2 className="text-white tracking-tight leading-6 text-2xl pb-8 h-24 pt-10 flex justify-end pr-8">
+          <h2 className="text-white tracking-tight leading-6 text-2xl pb-8 h-20 pt-10 flex justify-end pr-8">
             {currentAccount.name}
           </h2>
         </div>
@@ -51,9 +51,9 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
         </h1>
 
         <h3 className="text-white tracking-tight leading-6 text-2xl pt-16 h-18 pb-10">
-          Create a new profile and choose your icon.
+          Create a new profile and choose your color icon.
         </h3>
-      
+
         <br></br>
         <div className="">
           <ProfileForm
@@ -62,7 +62,9 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
             setProfiles={setProfiles}
           />
         </div>
-        <h2>{profileList}</h2>
+        <h2 className="text-white text-2xl font-semibold">
+          {profileList}
+        </h2>
         <h3>{msg}</h3>
         <p className="text-white tracking-tight leading-6 text-2xl pb-8 h-48 px-80 pt-80">
           You are currently logged in with {currentAccount.email}.
