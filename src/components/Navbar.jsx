@@ -5,24 +5,36 @@ export default function Navbar({ currentAccount, handleLogout }) {
   const loggedIn = (
     <>
       {/* if the Account is logged in .. */}
-      
-        <Link className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" to="/profileselection">Profile Selection</Link>
-      
+      <Link
+        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        to="/taskspage"
+      >
+        Tasks
+      </Link>
 
-      
-        <Link className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" to="/details">Account Details</Link>
-      
+      <Link
+        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        to="/profileselection"
+      >
+        Profile Selection
+      </Link>
 
-      
-        <Link className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" to="/taskspage">Tasks</Link>
-      
-      
-        <Link className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" to="/">
-          <span onClick={handleLogout}>Logout</span>
-        </Link>
-      
+      <Link
+        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        to="/details"
+      >
+        Account Details
+      </Link>
+
+
+      <Link
+        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        to="/"
+      >
+        <span onClick={handleLogout}>Logout</span>
+      </Link>
     </>
-  );
+  )
 
   const loggedOut = (
     <>
@@ -70,7 +82,7 @@ export default function Navbar({ currentAccount, handleLogout }) {
     <Nav fluid={true} rounded={true}>
       <Nav.Brand href="/">
         <span className="hover:text-blue-500 self-center whitespace-nowrap text-xl font-semibold text-blue-700 p-4">
-          Incrudibles
+          CheckMate
         </span>
       </Nav.Brand>
       <Nav.Toggle />
