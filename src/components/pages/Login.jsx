@@ -45,12 +45,7 @@ export default function Login({ currentAccount, setCurrentAccount }) {
   }
 
   return (
-    <html>
       <main class="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
-        <head>
-          <title>Login to CheckMate</title>
-        </head>
-        <body>
           <div>
             <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-40">
               Welcome Back!
@@ -106,8 +101,6 @@ export default function Login({ currentAccount, setCurrentAccount }) {
               <h1 className="p-40"></h1>
             </form>
           </div>
-        </body>
-      </main>
-    </html>
-  )
+        </main>
+    )
 }

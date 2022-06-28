@@ -2,12 +2,7 @@ import { Link } from "react-router-dom"
 
 export default function Welcome() {
   return (
-    <html>
       <main class="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
-        <head>
-          <title>Welcome to CheckMate</title>
-        </head>
-        <body>
           <div>
             <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-40">
               We're not your average check list.
@@ -63,8 +58,6 @@ export default function Welcome() {
               Bask in the glory.
             </h3>
           </div>
-        </body>
       </main>
-    </html>
   )
 }
