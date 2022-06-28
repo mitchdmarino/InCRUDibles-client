@@ -15,7 +15,7 @@ import TasksPage from "./components/pages/TasksPage";
 import ProfileSelection from "./components/pages/ProfileSelection";
 import Details from "./components/pages/Details";
 import axios from "axios";
-import { useCookies } from 'react-cookie'
+import { useCookies } from "react-cookie";
 
 function App() {
   // the currently logged in user will be stored in state
@@ -23,7 +23,7 @@ function App() {
   const [currentProfile, setCurrentProfile] = useState("");
   const [profiles, setProfiles] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [cookies, setCookie, removeCookie] = useCookies(['profile']);
+  const [cookies, setCookie, removeCookie] = useCookies(["profile"]);
 
   // useEffect -- if the Account navigates away from the page, we will log them back in
   useEffect(() => {
@@ -50,19 +50,22 @@ function App() {
         .then((response) => {
           setProfiles(response.data.profiles);
           setTasks(response.data.tasks);
-          // check if there is a profile id cookie 
-        if (cookies.profile) {
-          // if there is, set the current profile state to be the profile of the cookie
-          setCurrentProfile(response.data.profiles.find(profile => profile._id===cookies.profile))
-        }
-          
+          // check if there is a profile id cookie
+          if (cookies.profile) {
+            // if there is, set the current profile state to be the profile of the cookie
+            setCurrentProfile(
+              response.data.profiles.find(
+                (profile) => profile._id === cookies.profile
+              )
+            );
+          }
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      setCurrentAccount(null)
-      console.log('hello');
+      setCurrentAccount(null);
+      console.log("hello");
     }
   }, []);
 
@@ -72,11 +75,10 @@ function App() {
     if (localStorage.getItem("jwt")) {
       // if so, delete
       localStorage.removeItem("jwt");
-      // remove the profile cookie 
-      removeCookie('profile')
+      // remove the profile cookie
+      removeCookie("profile");
       // set the Account in app state to null
       setCurrentAccount(null);
-
     }
   };
   // const handleSubmit = (e, form, setForm) => {

@@ -37,6 +37,8 @@ export default function TasksPage({
           key={`task${task._id}`}
           task={task}
           currentProfile={currentProfile}
+          profiles={profiles}
+          setTasks={setTasks}
         />
       </ul>
     );
