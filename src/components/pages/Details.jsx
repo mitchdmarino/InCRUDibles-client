@@ -62,7 +62,7 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
             setProfiles={setProfiles}
           />
         </div>
-        <h2 className="text-white text-2xl font-semibold">
+        <h2>
           {profileList}
         </h2>
         <h3>{msg}</h3>

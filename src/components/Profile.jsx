@@ -52,33 +52,43 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
   }
 
     return (
-        <div onClick={showEdit ? handleNothing : () => handleProfileSelect(profile)}
-          style={{backgroundColor: `${profile.color}`}} className={`border-solid border-black border-4  w-[200px] mx-auto m-10 p-2 `}>
-        
-        <h3>{profile.name}</h3>
-        <p>color: {profile.color}</p>
-        {
-          showEdit ? 
-          <div className="edit-container">
-          <button 
-                  onClick={()=> setShowForm(!showForm)}
-              >
-                  {showForm ? 'Cancel': 'Edit'}
-          </button>
-        
-          {
-            showForm ? 
-            <ProfileForm key={`editProfileForm-${profile._id}`} initialForm={{name:profile.name, color: profile.color}} handleSubmit={handleEditProfile}/>:
-            ''
+      <div>
+        <div
+          onClick={
+            showEdit ? handleNothing : () => handleProfileSelect(profile)
           }
-          {
-            showForm ?
-            <button onClick={handleDeleteProfile}>Delete</button>: ''
-          }
-        </div> : 
-        ''
-        }
-        
+          style={{ color: `${profile.color}` }}
+          className={`bg-white text-2xl font-semibold rounded-full w-[200px] mx-auto p-2 m-10 shadow-lg shadow-indigo-500/40`}
+        >
+          <h3>{profile.name}</h3>
+          {/* <p>{profile.color}</p> */}
+        </div>
+        <div className="bg-white text-blue-500 hover:bg-blue-500 hover:text-white p-2 rounded-full font-semibold shadow-lg shadow-indigo-500/40 w-[80px] mx-auto">
+          {showEdit ? (
+            <div className="edit-container">
+              <button onClick={() => setShowForm(!showForm)}>
+                {showForm ? "Cancel" : "Edit"}
+              </button>
+
+              {showForm ? (
+                <ProfileForm
+                  key={`editProfileForm-${profile._id}`}
+                  initialForm={{ name: profile.name, color: profile.color }}
+                  handleSubmit={handleEditProfile}
+                />
+              ) : (
+                ""
+              )}
+              {showForm ? (
+                <button onClick={handleDeleteProfile}>Delete</button>
+              ) : (
+                ""
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     )
 }
