@@ -65,13 +65,15 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
             {/* <p>{profile.color}</p> */}
           
     
-          <div className="bg-white text-2xl text-blue-500 hover:bg-blue-500 hover:text-white p-2 rounded-full font-semibold shadow-lg shadow-indigo-500/40 mt-10">
-              {showEdit ? (
-                <div className="edit-container">
-                  <button onClick={() => setShowForm(!showForm)}>
-                    {showForm ? "Cancel" : "Edit"}
-                  </button>
+          <div className="bg-white text-[16px] flex justify-center text-blue-500 hover:bg-blue-500 hover:text-white rounded-full font-semibold shadow-lg shadow-indigo-500/40 mt-10">
+              
+            {showEdit ? (
+              <div className="edit-container flex justify-center">
+                <button onClick={() => setShowForm(!showForm)}>
+                  {showForm ? "Cancel" : "Edit"}
+                </button>
             
+                  
                     {showForm ? (
                       <ProfileForm
                         key={`editProfileForm-${profile._id}`}
@@ -81,22 +83,22 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
                         }}
                         handleSubmit={handleEditProfile}
                       />
+                     
+                    
                     ) : (
                       ""
                     )}
-                  {showForm ? (
-                    <div className="pt-10">
-                      <div className="font-semibold bg-white text-blue-500 hover:bg-blue-500 hover:text-white p-2 rounded-full w-[80px] h-[40px]">
+                  
+                    {showForm ? (
                         <button onClick={handleDeleteProfile}>Delete</button>
-                      </div>
-                    </div>
-                  ) : (
+                    ) : (
                     ""
-                  )}
+                    )}
                 </div>
               ) : (
                 ""
               )}
+             
             </div>
           </div>
     )
