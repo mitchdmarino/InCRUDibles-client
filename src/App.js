@@ -120,17 +120,16 @@ function App() {
               <TasksPage
                 currentAccount={currentAccount}
                 tasks={tasks}
+                currentProfile={currentProfile}
                 profiles={profiles}
+                setTasks={setTasks}
                 initialForm={{ description: "", completed: false }}
-
               />
             }
           />
           <Route
             path="/details"
             element={
-
-
               currentAccount ? (
                 <Details
                   initialForm={{ name: "", color: "" }}
@@ -143,7 +142,6 @@ function App() {
                 <Navigate to="/login" />
               )
             }
-
           />
           <Route
             path="/profileselection"

@@ -3,7 +3,13 @@ import ProfileForm from "../ProfileForm";
 import { useState } from "react";
 import Task from "../Task";
 
-export default function TasksPage(props, initialForm, tasks, setTasks) {
+export default function TasksPage({
+  initialForm,
+  tasks,
+  setTasks,
+  profiles,
+  currentProfile,
+}) {
   const [form, setForm] = useState({ completed: false, initialForm });
   const handleSubmit = (e, form, setForm) => {
     const token = localStorage.getItem("jwt");
@@ -16,16 +22,22 @@ export default function TasksPage(props, initialForm, tasks, setTasks) {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/tasks`, form, options)
       .then((response) => {
-        console.log(response.data);
-        // props.setTasks(response.data);
+        console.log(response.data.tasks);
+        setTasks(response.data.tasks);
+        setForm({ description: "", completed: false });
       })
+
       .catch(console.warn);
   };
 
-  const taskList = props.tasks.map((task, idx) => {
+  const taskList = tasks.map((task, idx) => {
     return (
       <ul>
-        <Task key={`task${task._id}`} task={task} />
+        <Task
+          key={`task${task._id}`}
+          task={task}
+          currentProfile={currentProfile}
+        />
       </ul>
     );
   });
@@ -55,7 +67,7 @@ export default function TasksPage(props, initialForm, tasks, setTasks) {
         <input
           type="hidden"
           id="profile"
-          value={props.profiles.name}
+          value={profiles.name}
           onChange={(e) => setForm({ ...form, profile: e.target.value })}
         />
         <button type="submit">Add Task</button>

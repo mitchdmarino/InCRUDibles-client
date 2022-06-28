@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 
-export default function Task({ task }) {
+export default function Task({ task, currentProfile }) {
   const handlecompletedTask = (e) => {
+    console.log(currentProfile);
     const token = localStorage.getItem("jwt");
     const options = {
       headers: {
@@ -19,7 +20,12 @@ export default function Task({ task }) {
         console.log(response);
         // setTasks({ completed: true });
       });
+    axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/api-v1/${task._id}/profile/${currentProfile._id}`,
+      options
+    );
   };
+
   return (
     <ul>
       <li>
