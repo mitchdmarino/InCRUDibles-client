@@ -48,12 +48,8 @@ export default function Register({ currentAccount, setCurrentAccount }) {
   }
 
   return (
-    <html>
-      <main class="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
-        <head>
-          <title>Register to CheckMate</title>
-        </head>
-        <body>
+   
+      <main className="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
           <div>
             <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-32 h-48">
               Create Account
@@ -124,8 +120,6 @@ export default function Register({ currentAccount, setCurrentAccount }) {
               <h1 className="p-20"></h1>
             </form>
           </div>
-        </body>
       </main>
-    </html>
   )
 }
