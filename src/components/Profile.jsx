@@ -2,11 +2,14 @@ import ProfileForm from "./ProfileForm";
 import axios from "axios";
 import {useState} from 'react'
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 export default function Profile ({profile, setProfiles, showEdit , setCurrentProfile }) {
   let navigate = useNavigate()
   const [showForm, setShowForm] = useState(false)
   const [showEditDiv, setShowEditDiv] = useState(false)
+  const [cookies, setCookie, removeCookie] = useCookies(['profile'])
+
   const handleEditProfile = (e, form, setForm) => {
     e.preventDefault()
     const token = localStorage.getItem("jwt");
@@ -37,9 +40,10 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
       
     
   }
-
+  // when user selects a profile, set the current Profile state and add a cookie 
   const handleProfileSelect = (selectedProfile) => {
     setCurrentProfile(selectedProfile)
+    setCookie('profile', selectedProfile._id)
     navigate("/taskspage", { replace: true })
 
   } 
