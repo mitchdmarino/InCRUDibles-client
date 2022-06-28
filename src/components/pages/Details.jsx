@@ -54,7 +54,6 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
           Create a new profile and choose your color icon.
         </h3>
 
-        <br></br>
         <div className="">
           <ProfileForm
             initialForm={{ name: "", color: "red" }}
@@ -62,7 +61,7 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
             setProfiles={setProfiles}
           />
         </div>
-        <h2 className="text-white text-2xl font-semibold">
+        <h2>
           {profileList}
         </h2>
         <h3>{msg}</h3>

@@ -34,7 +34,7 @@ export default function ProfileForm({handleSubmit, initialForm}) {
         </div>
         <br></br>
         <div className="flex justify-center">
-          <div className="hover:bg-white hover:text-blue-500 bg-blue-500 text-white p-2 rounded-full font-semibold shadow-lg shadow-indigo-500/40 h-10">
+          <div className="bg-white text-blue-500 hover:bg-blue-500 hover:text-white p-2 rounded-full font-semibold shadow-lg shadow-indigo-500/40 h-10 w-[80px]">
             <button type="submit">Submit</button>
           </div>
         </div>

@@ -52,34 +52,53 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
   }
 
     return (
-        <div onClick={showEdit ? handleNothing : () => handleProfileSelect(profile)}
-          style={{backgroundColor: `${profile.color}`}} className={`border-solid border-black border-4  w-[200px] mx-auto m-10 p-2 `}>
-        
-        <h3>{profile.name}</h3>
-        <p>color: {profile.color}</p>
-        {
-          showEdit ? 
-          <div className="edit-container">
-          <button 
-                  onClick={()=> setShowForm(!showForm)}
-              >
-                  {showForm ? 'Cancel': 'Edit'}
-          </button>
-        
-          {
-            showForm ? 
-            <ProfileForm key={`editProfileForm-${profile._id}`} initialForm={{name:profile.name, color: profile.color}} handleSubmit={handleEditProfile}/>:
-            ''
-          }
-          {
-            showForm ?
-            <button onClick={handleDeleteProfile}>Delete</button>: ''
-          }
-        </div> : 
-        ''
-        }
-        
-      </div>
+   
+      
+          <div
+            onClick={
+              showEdit ? handleNothing : () => handleProfileSelect(profile)
+            }
+            style={{ backgroundColor: `${profile.color}` }}
+            className={`z-0 text-blue-500 pt-14 text-4xl font-semibold rounded-full w-[160px] h-[160px] mx-auto shadow-lg shadow-indigo-500/40 p-10 m-10`}
+          >
+            <h3>{profile.name}</h3>
+            {/* <p>{profile.color}</p> */}
+          
+    
+          <div className="bg-white text-2xl text-blue-500 hover:bg-blue-500 hover:text-white p-2 rounded-full font-semibold shadow-lg shadow-indigo-500/40 mt-10">
+              {showEdit ? (
+                <div className="edit-container">
+                  <button onClick={() => setShowForm(!showForm)}>
+                    {showForm ? "Cancel" : "Edit"}
+                  </button>
+            
+                    {showForm ? (
+                      <ProfileForm
+                        key={`editProfileForm-${profile._id}`}
+                        initialForm={{
+                          name: profile.name,
+                          color: profile.color,
+                        }}
+                        handleSubmit={handleEditProfile}
+                      />
+                    ) : (
+                      ""
+                    )}
+                  {showForm ? (
+                    <div className="pt-10">
+                      <div className="font-semibold bg-white text-blue-500 hover:bg-blue-500 hover:text-white p-2 rounded-full w-[80px] h-[40px]">
+                        <button onClick={handleDeleteProfile}>Delete</button>
+                      </div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
     )
 }
 
