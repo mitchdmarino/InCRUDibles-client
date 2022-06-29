@@ -1,21 +1,19 @@
 import React from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { useState } from 'react'
+import { useState } from "react";
 import { useEffect } from "react";
 
 export default function Task({ task, currentProfile, profiles, setTasks }) {
-
-  const [profileColor, setProfileColor] = useState('white')
+  const [profileColor, setProfileColor] = useState("white");
 
   useEffect(() => {
     if (task.profile) {
-      console.log(task.profile.color)
-      setProfileColor(task.profile.color)
+      console.log(task.profile.color);
+      setProfileColor(task.profile.color);
     }
-    console.log(task)
-  }, [])
-
+    console.log(task);
+  }, []);
 
   const handlecompletedTask = (e) => {
     console.log(currentProfile);
@@ -32,7 +30,6 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
         options
       )
       .then((response) => {
-
         // setTasks({ completed: true });
       });
     //
@@ -42,9 +39,7 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
         {},
         options
       )
-      .then((response) => {
-
-      });
+      .then((response) => {});
     const loggedInAccount = jwt_decode(token);
     axios
       .get(
@@ -53,22 +48,25 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
       )
       .then((response) => {
         setTasks(response.data.tasks);
-      })
-      ;
-    setProfileColor(currentProfile.color)
+      });
+    setProfileColor(currentProfile.color);
   };
 
   const handleDeleteTask = () => {
-    console.log(`delete this task ${task.description}`)
+    console.log(`delete this task ${task.description}`);
     const token = localStorage.getItem("jwt");
     const options = {
       headers: {
         Authorization: token,
       },
     };
-    axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/tasks/${task._id}`, options)
-      .then(console.log)
-      const loggedInAccount = jwt_decode(token);
+    axios
+      .delete(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/tasks/${task._id}`,
+        options
+      )
+      .then(console.log);
+    const loggedInAccount = jwt_decode(token);
     axios
       .get(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/account/${loggedInAccount.id}`,
@@ -76,10 +74,9 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
       )
       .then((response) => {
         setTasks(response.data.tasks);
-      })
-  }
+      });
+  };
 
-  
   // let bGColor = "";
   // if (task.profile) {
   //   if (task.profile.color) {
@@ -151,5 +148,5 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
         </button>
       </td>
     </>
-  )
+  );
 }
