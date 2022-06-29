@@ -46,7 +46,7 @@ export default function Welcome() {
         </p>
         <br></br>
         <h3 className="text-white tracking-tight text-4xl self-center font-bold dark:text-white p-8 flex justify-end">
-          Bask in the glory... You're Welcome.
+          Bask in the glory.
         </h3>
       </div>
     </main>
