@@ -13,8 +13,10 @@ export default function ProfileSelection({profiles, setProfiles, currentProfile,
   return (
     
     <div className="">
-      <h1 className="text-6xl">Profile Selection Page</h1>
+      <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">Choose Your Profile</h1>
+      <h2 className="flex">
       {profileList}
+      </h2>
     </div>
   );
 }
