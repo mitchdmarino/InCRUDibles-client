@@ -1,6 +1,6 @@
 import axios from "axios";
 import ProfileForm from "../ProfileForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Task from "../Task";
 
 export default function TasksPage({
@@ -11,6 +11,7 @@ export default function TasksPage({
   currentProfile,
 }) {
   const [form, setForm] = useState({ completed: false, initialForm });
+  const [msg, setMsg] = useState();
   const handleSubmit = (e, form, setForm) => {
     const token = localStorage.getItem("jwt");
     const options = {
@@ -29,6 +30,35 @@ export default function TasksPage({
 
       .catch(console.warn);
   };
+  const msgArr = [
+    "You should get these done...",
+    "You miss 100% of the shots you don't take -Michael Scott",
+    "Stop being lazy",
+    "That's a long list, it would be a shame if it kept growing",
+    "Just pick a task and do it already",
+    "You're mom would be ashamed if she saw this list",
+  ];
+
+  useEffect(() => {
+    setMsg(msgArr[Math.floor(Math.random() * msgArr.length)]);
+  }, []);
+
+  const phArr = [
+    "Do the dishes",
+    "Mow the lawn",
+    "Pay rent",
+    "Do the laundry",
+    "Wash the car",
+    "Get out of bed",
+    "Go outside",
+    "Touch grass",
+    "Call your parents",
+    "Quit your job",
+    "Find a job",
+    "Pay the bills",
+    "Do your homework",
+  ];
+  const phMsg = phArr[Math.floor(Math.random() * phArr.length)];
 
   const taskList = tasks.map((task, idx) => {
     return (
@@ -45,21 +75,12 @@ export default function TasksPage({
       </div>
     );
   });
-  const msgArr = [
-    "You should get these done...",
-    "You miss 100% of the shots you don't take -Michael Scott",
-    "Stop being lazy",
-    "That's a long list, it would be a shame if it kept growing",
-    "Just pick a task and do it already",
-    "You're mom would be ashamed if she saw this list",
-  ];
-  const randomMsg = msgArr[Math.floor(Math.random() * msgArr.length)];
 
   return (
     <main>
       <div>
         <h1 className="pb-12 text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
-          {randomMsg}
+          {msg}
         </h1>
 
         <form onSubmit={(e) => handleSubmit(e, form, setForm)}>
@@ -71,7 +92,7 @@ export default function TasksPage({
           </label>
           <input
             className="m-2 rounded-full w-60 h-8 font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
-            placeholder="Walk the dog"
+            placeholder={phMsg}
             type="text"
             id="description"
             value={form.description}
