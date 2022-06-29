@@ -13,7 +13,7 @@ export default function ProfileSelection({profiles, setProfiles, currentProfile,
   return (
     
     <div className="">
-      <h1 className="text-6xl">Profile selection Page</h1>
+      <h1 className="text-6xl">Profile Selection Page</h1>
       {profileList}
     </div>
   );
