@@ -25,33 +25,24 @@ export default function Welcome() {
         </h3>
         <br></br>
         <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white pl-36 pt-20 pb-4 flex justify-start">
-          Invite your crew.
+          See the Big Picture
         </h3>
         <p className="text-white tracking-tight leading-6 text-2xl pb-8 h-48 pr-80 mr-60">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+         Use CheckMate to achieve your goals and get more out of your time  - efficiently. Create customized tasks to effectively plan your day or week for maximum productivity.
         </p>
         <br></br>
         <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white pr-36 pb-4 flex justify-end">
-          Log your tasks.
+          Keep on Track
         </h3>
         <p className="text-white tracking-tight leading-6 text-2xl pb-8 h-48 pl-80 ml-60">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Untangle your day and get tasks out of your head and into CheckMate quickly to stay organized and on track. Your brain just got a big upgrade  
         </p>
         <br></br>
         <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white pl-36 pb-4 flex justify-start">
-          Complete your list.
+          Set your future self up for a win
         </h3>
         <p className="text-white tracking-tight leading-6 text-2xl pb-8 h-48 pr-80 mr-60">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Accomplish big things when you do them one step at a time. CheckMate helps you keep in control so you focus on the what's important now. 
         </p>
         <br></br>
         <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white p-8 flex justify-end">
