@@ -1,17 +1,16 @@
 import { getByPlaceholderText } from "@testing-library/react"
 import React from "react"
 
-const date = () => {
+export default function displayDate () {
     const fullDate = new Date()
+
 
     return (
       <div>
-        <input
-          type="text"
-          value={fullDate}
-        />
+        <h2 className="text-white">
+        {`${fullDate.getMonth()+1} / ${fullDate.getDate()} / ${fullDate.getFullYear()}`}
+        </h2>
       </div>
     )
 }
 
-export default Date
