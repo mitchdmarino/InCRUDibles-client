@@ -50,7 +50,7 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
     console.log('nothing')
   }
 
-  const styling = showEdit ? `z-0 text-blue-500 pt-14 text-4xl font-semibold rounded-full w-[160px] h-[160px] mx-auto shadow-lg shadow-indigo-500/40 p-10 m-20` : `z-0 text-blue-500 pt-14 text-4xl font-semibold  rounded-full w-[160px] h-[160px] mx-auto shadow-lg shadow-indigo-500/40 p-10 m-20 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out`
+  const styling = showEdit ? `z-0 text-white pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20` : `z-0 text-blue-500 pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out`
 
     return (
       <div
@@ -58,11 +58,12 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
         style={{ backgroundColor: `${profile.color}` }}
         className={styling}
       >
-        <h3>{profile.name}</h3>
+        <h3 className="pt-4">{profile.name}</h3>
         {/* <p>{profile.color}</p> */}
 
         <div className="text-[16px] flex justify-center text-blue-500 mt-10">
           {showForm ? (
+            <div className="mt-2">
             <ProfileForm
               key={`editProfileForm-${profile._id}`}
               initialForm={{
@@ -71,22 +72,22 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
               }}
               handleSubmit={handleEditProfile}
             />
+            </div>
           ) : (
             ""
           )}
           {showEdit ? (
             <div className="edit-container flex justify-center">
               <button
-                className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white h-10 w-[80px]"
+                className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white h-10 w-[80px] mt-2"
                 onClick={() => setShowForm(!showForm)}
               >
                 {showForm ? "Cancel" : "Edit"}
               </button>
 
-
               {showForm ? (
                 <button
-                  className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white  h-10 w-[80px]"
+                  className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white  h-10 w-[80px] mt-2"
                   onClick={handleDeleteProfile}
                 >
                   Delete
