@@ -7,7 +7,6 @@ import { useCookies } from 'react-cookie';
 export default function Profile ({profile, setProfiles, showEdit , setCurrentProfile }) {
   let navigate = useNavigate()
   const [showForm, setShowForm] = useState(false)
-  const [showEditDiv, setShowEditDiv] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['profile'])
 
   const handleEditProfile = (e, form, setForm) => {
@@ -51,11 +50,13 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
     console.log('nothing')
   }
 
+  const styling = showEdit ? `z-0 text-blue-500 pt-14 text-4xl font-semibold rounded-full w-[160px] h-[160px] mx-auto shadow-lg shadow-indigo-500/40 p-10 m-20` : `z-0 text-blue-500 pt-14 text-4xl font-semibold  rounded-full w-[160px] h-[160px] mx-auto shadow-lg shadow-indigo-500/40 p-10 m-20 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out`
+
     return (
       <div
         onClick={showEdit ? handleNothing : () => handleProfileSelect(profile)}
         style={{ backgroundColor: `${profile.color}` }}
-        className={`z-0 text-blue-500 pt-14 text-4xl font-semibold rounded-full w-[160px] h-[160px] mx-auto shadow-lg shadow-indigo-500/40 p-10 m-20`}
+        className={styling}
       >
         <h3>{profile.name}</h3>
         {/* <p>{profile.color}</p> */}
