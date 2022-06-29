@@ -49,13 +49,13 @@ export default function Register({ currentAccount, setCurrentAccount }) {
 
   return (
    
-      <main className="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
+      <main>
           <div>
             <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-32 h-48">
               Create Account
             </h1>
             <p className="text-white tracking-tight leading-6 text-2xl pt-10">
-              Enter your Name, Email, and Password to sign up.
+              Enter your Organization Name, Email, and Password to sign up.
               <Link to="/login" className="text-blue-800 hover:text-white">
                 {"  "}
                 Already have an account with us?
@@ -74,7 +74,7 @@ export default function Register({ currentAccount, setCurrentAccount }) {
                   name="name"
                   id="name"
                   value={name}
-                  placeholder="Username"
+                  placeholder="Organization Name"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
