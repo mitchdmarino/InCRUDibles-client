@@ -104,7 +104,7 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
     <>
       <td>
         <button
-          className="over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+          className="over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out mt-3"
           onClick={handlecompletedTask}
         >
           <svg
@@ -130,7 +130,7 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
 
       <td>
         <button
-          className="over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+          className="over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out p-6"
           onClick={handleDeleteTask}
         >
           <svg
