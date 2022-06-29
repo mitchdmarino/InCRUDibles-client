@@ -50,7 +50,9 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
     console.log('nothing')
   }
 
-  const styling = showEdit ? `z-0 text-white pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20` : `z-0 text-blue-500 pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out`
+  const styling = showEdit
+    ? `z-0 text-white pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20 border-4 border-white`
+    : `z-0 text-white pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out border-4 border-white`
 
     return (
       <div
@@ -58,7 +60,7 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
         style={{ backgroundColor: `${profile.color}` }}
         className={styling}
       >
-        <h3 className="pt-4">{profile.name}</h3>
+        <h3 className="pt-3">{profile.name}</h3>
         {/* <p>{profile.color}</p> */}
 
         <div className="text-[16px] flex justify-center text-blue-500 mt-10">
