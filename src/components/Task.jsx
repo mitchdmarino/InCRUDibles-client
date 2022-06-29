@@ -101,20 +101,55 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
   // }
   // console.log(bGColor, "outside");
   return (
-    <ul>
-      <li>
-        {task.description}{" "}
-        <button onClick={handlecompletedTask}>
-          <svg xmlns="http://www.w3.org/2000/svg" style={{ backgroundColor: profileColor}}className="h-6 w-6 rounded-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path className="text-black" stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    <>
+      <td>
+        <button
+          className="over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+          onClick={handlecompletedTask}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ backgroundColor: profileColor }}
+            className="h-8 w-8 rounded-full"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              className="text-black"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
           </svg>
         </button>
-        <button onClick={handleDeleteTask}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 rounded-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path className="text-white" stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+      </td>
+
+      <td>{task.description}</td>
+
+      <td>
+        <button
+          className="over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+          onClick={handleDeleteTask}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8 rounded-full"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              className="text-white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+            />
           </svg>
         </button>
-      </li>
-    </ul>
-  );
+      </td>
+    </>
+  )
 }
