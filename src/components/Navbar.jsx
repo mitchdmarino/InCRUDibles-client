@@ -17,7 +17,7 @@ export default function Navbar({ currentAccount, handleLogout, currentProfile })
         className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
         to="/profileselection"
       >
-        Profile Selection
+        Profiles
       </Link>
 
       <Link
@@ -85,7 +85,7 @@ export default function Navbar({ currentAccount, handleLogout, currentProfile })
     // </nav>
     <Nav fluid={true} rounded={true}>
       <Nav.Brand href="/">
-        <span className="hover:text-blue-500 self-center whitespace-nowrap text-xl font-semibold text-blue-700 p-4">
+        <span className="hover:text-blue-500 self-center whitespace-nowrap text-2xl font-bold text-blue-700 p-1.5">
           CheckMate
         </span>
       </Nav.Brand>
