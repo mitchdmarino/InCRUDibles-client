@@ -43,10 +43,19 @@ export default function TasksPage({
       </ul>
     );
   });
+  const msgArr = [
+    "You should get these done...",
+    "You miss 100% of the shots you don't take -Michael Scott",
+    "Stop being lazy",
+    "That's a long list, it would be a shame if it kept growing",
+    "Just pick a task and do it already",
+    "You're mom would be ashamed if she saw this list",
+  ];
+  const randomMsg = msgArr[Math.floor(Math.random() * msgArr.length)];
 
   return (
     <div>
-      <h1 className="text-6xl">Task Page</h1>
+      <h1 className="text-6xl">{randomMsg}</h1>
 
       <form onSubmit={(e) => handleSubmit(e, form, setForm)}>
         <label htmlFor="description">Task Description: </label>
