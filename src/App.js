@@ -95,7 +95,7 @@ function App() {
   return (
     <Router>
       <header>
-        <Navbar currentAccount={currentAccount} handleLogout={handleLogout} />
+        <Navbar currentAccount={currentAccount} handleLogout={handleLogout} currentProfile={currentProfile} />
       </header>
       <main>
         <Routes>
