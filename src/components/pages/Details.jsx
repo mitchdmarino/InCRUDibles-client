@@ -35,7 +35,7 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
   }
 
   return (
-    <main className="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
+    <main>
       <div>
         <div className="flex justify-between">
           <div className="text-white tracking-tight leading-6 text-2xl pb-8 h-20 pt-10 flex justify-start pl-8">

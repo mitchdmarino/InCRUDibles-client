@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 export default function Welcome() {
   return (
-    <main class="bg-cover bg-gradient-to-r from-cyan-500 to-blue-500">
+    <main>
       <div>
         <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
           We're not your average check list.
