@@ -1,8 +1,8 @@
-# InCRUDibles Project Name TBD
+# Check Mate 
 
 ## Description 
 
-(inCRUDibles proj, name TBD) is a task tracking app for groups. Create an account for your group, use profiles for the different members of the group, and complete shared tasks. Users are able to create tasks inside the app for the whole group to track. Once a user has completed a task, they can mark it as such. Users will also be able to edit and delete tasks as they see fit.
+Check Mate is a task tracking app for groups. Create an account for your group, use profiles for the different members of the group, and complete shared tasks. Users are able to create tasks inside the app for the whole group to track. Once a user has completed a task, they can mark it as such. Users will also be able to edit and delete tasks as they see fit.
 
 Users will be able to mark who started and completed tasks based on profiles assigned to the account
 
