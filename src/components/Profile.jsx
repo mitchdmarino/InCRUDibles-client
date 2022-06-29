@@ -22,6 +22,7 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
         console.log(response)
         setProfiles(response.data.profiles)
       })
+      setShowForm(false)
   }
 
   const handleDeleteProfile = () => {
