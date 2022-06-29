@@ -43,14 +43,23 @@ export default function TasksPage({
           />
         </ul>
       </div>
-    )
+    );
   });
+  const msgArr = [
+    "You should get these done...",
+    "You miss 100% of the shots you don't take -Michael Scott",
+    "Stop being lazy",
+    "That's a long list, it would be a shame if it kept growing",
+    "Just pick a task and do it already",
+    "You're mom would be ashamed if she saw this list",
+  ];
+  const randomMsg = msgArr[Math.floor(Math.random() * msgArr.length)];
 
   return (
     <main>
       <div>
         <h1 className="pb-12 text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
-          You better get this done...
+          {randomMsg}
         </h1>
 
         <form onSubmit={(e) => handleSubmit(e, form, setForm)}>
@@ -103,8 +112,7 @@ export default function TasksPage({
         </form>
         {taskList}
       </div>
-      <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white p-8 flex justify-end">
-      </h3>
+      <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white p-8 flex justify-end"></h3>
     </main>
-  )
+  );
 }
