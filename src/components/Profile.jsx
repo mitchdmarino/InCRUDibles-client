@@ -6,11 +6,11 @@ import { useCookies } from 'react-cookie';
 
 export default function Profile ({profile, setProfiles, showEdit , setCurrentProfile }) {
   let navigate = useNavigate()
-  // showForm: choose whether or not to display the Edit form based on button click
+  // showForm decides whether or not to display an Edit form based on button click.
   const [showForm, setShowForm] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['profile'])
 
-  // Edit profile on submission of edit form 
+  // A profile is edited once an edit form is submitted.
   const handleEditProfile = (e, form, setForm) => {
     e.preventDefault()
     const token = localStorage.getItem("jwt");
@@ -29,7 +29,7 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
       setShowForm(false)
   }
 
-  // delete profile when delete button is clicked  
+  // A profile is deleted once the delete button is clicked. 
   const handleDeleteProfile = () => {
     const token = localStorage.getItem("jwt");
     const options = {
@@ -48,7 +48,8 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
       
     
   }
-  // when user selects a profile, set the current Profile state and add a cookie 
+
+  // When a user selects a profile, the current profile state is set and a cookie is added.
   const handleProfileSelect = (selectedProfile) => {
     setCurrentProfile(selectedProfile)
     setCookie('profile', selectedProfile._id)
@@ -59,7 +60,7 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
     
   }
 
-  // styling for profile selection page (showEdit=false) vs account details page (showEdit=True)
+  // This ternary operator determines the styling for both the profile selection page and the account details page.
   const styling = showEdit
     ? `z-0 text-white pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20 border-4 border-white`
     : `z-0 text-white pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out border-4 border-white`
@@ -71,7 +72,6 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
         className={styling}
       >
         <h3 className="pt-3">{profile.name}</h3>
-        {/* <p>{profile.color}</p> */}
 
         <div className="text-[16px] flex justify-center text-blue-500 mt-10">
           {showForm ? (

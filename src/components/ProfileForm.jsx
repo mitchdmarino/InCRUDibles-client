@@ -29,14 +29,6 @@ export default function ProfileForm({handleSubmit, initialForm, isCreate}) {
           onChange={(e) => setForm({ ...form, color: e.target.value })}
           required
         />
-        {/* <option value="#F06666">Red</option>
-          <option value="#F89A4C">Orange</option>
-          <option value="#EEE86D">Yellow</option>
-          <option value="#52F49F">Green</option>
-          <option value="#6699F0">Blue</option>
-          <option value="#9F6DE1">Purple</option>
-          <option value="#F08CD2">Pink</option>
-        </select> */}
       </div>
       <br></br>
     { isCreate ? 

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 
+// The welcome page introduces the app to the user. There is a link to the register page.
+// This page is also accessible to those who do not have an account.
 export default function Welcome() {
   return (
     <main>
