@@ -6,9 +6,8 @@ export default function ProfileSelection({
   currentProfile,
   setCurrentProfile,
 }) {
-  // profiles --- array [profile1, profile2, ...]
-  // show a list of all profiles. showEdit prop will be false because 
-  // we don't want the edit option on this page, only on the account details page.
+  // Profiles --- array [profile1, profile2, ...]
+  // showEdit prop is false, however, when this component is rendered on the details page, the prop is true.
   const profileList = profiles.map((profile) => {
     return (
       <Profile
@@ -18,8 +17,10 @@ export default function ProfileSelection({
         setProfiles={setProfiles}
         showEdit={false}
       />
-    );
-  });
+    )
+  })
+  // A list of all profiles are shown on this page.
+  // This is where the user can access their personal profile.
   return (
     <div className="">
       <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
@@ -27,5 +28,5 @@ export default function ProfileSelection({
       </h1>
       <h2 className="flex flex-wrap">{profileList}</h2>
     </div>
-  );
+  )
 }
