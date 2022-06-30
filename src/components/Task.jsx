@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function Task({ task, currentProfile, profiles, setTasks }) {
-  const [profileColor, setProfileColor] = useState("white");
+  const [profileColor, setProfileColor] = useState("");
 
   useEffect(() => {
     if (task.profile) {
@@ -16,7 +16,6 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
   }, []);
 
   const handlecompletedTask = (e) => {
-    console.log(currentProfile);
     const token = localStorage.getItem("jwt");
     const options = {
       headers: {
