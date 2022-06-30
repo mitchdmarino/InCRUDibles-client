@@ -86,9 +86,6 @@ export default function TasksPage({
         <h1 className="pb-10 text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
           {msg}
         </h1>
-        <h2>
-          <Date />
-        </h2>
 
         <form className="p-10" onSubmit={(e) => handleSubmit(e, form, setForm)}>
           <label
@@ -139,6 +136,9 @@ export default function TasksPage({
             </svg>
           </button>
         </form>
+        <h2 className="text-white text-[25px] font-semibold">
+          Your list for: <Date />
+        </h2>
         <div className="text-white text-[20px] font-semibold p-8">
           <table class="table-auto mx-auto">
             <thead>

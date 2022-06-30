@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Profile from "../Profile";
 import ProfileForm from "../ProfileForm";
-
+import Date from "../Date"
 
 export default function Details({ currentAccount, handleLogout, profiles, setProfiles }) {
   // are my changes showign?
@@ -39,18 +39,19 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
       <div>
         <div className="flex justify-between">
           <div className="text-white tracking-tight leading-6 text-2xl pb-8 h-20 pt-10 flex justify-start pl-8">
-            Your Dashboard
+            {currentAccount.name}'s Dashboard
           </div>
           <h2 className="text-white tracking-tight leading-6 text-2xl pb-8 h-20 pt-10 flex justify-end pr-8">
-            {currentAccount.name}
+            <Date />
           </h2>
+          {/* {currentAccount.name} */}
         </div>
 
-        <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white p-8">
+        <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white p-6">
           User Profiles
         </h1>
 
-        <h3 className="text-white tracking-tight leading-6 text-2xl pt-16 h-18 pb-10">
+        <h3 className="text-white tracking-tight leading-6 text-2xl h-24 pb-10">
           Create a new profile and choose your color icon.
         </h3>
 
@@ -61,9 +62,7 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
             setProfiles={setProfiles}
           />
         </div>
-        <h2>
-          {profileList}
-        </h2>
+        <h2>{profileList}</h2>
         <h3>{msg}</h3>
         <p className="text-white tracking-tight leading-6 text-2xl pb-8 h-48 px-80 pt-80">
           You are currently logged in with {currentAccount.email}.
