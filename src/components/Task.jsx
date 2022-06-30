@@ -11,8 +11,7 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
     if (task.profile) {
       console.log(task.profile.color);
       setProfileColor(task.profile.color);
-    }
-    console.log(task);
+    }    
   }, []);
 
   const handlecompletedTask = (e) => {
@@ -25,20 +24,13 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
     axios
       .put(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/tasks/${task._id}`,
-        { completed: true },
+        { completed: true , profile: currentProfile._id},
         options
       )
       .then((response) => {
         // setTasks({ completed: true });
       });
-    //
-    axios
-      .post(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/tasks/${task._id}/profile/${currentProfile._id}`,
-        {},
-        options
-      )
-      .then((response) => {});
+    
     const loggedInAccount = jwt_decode(token);
     axios
       .get(
@@ -46,7 +38,7 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
         options
       )
       .then((response) => {
-        setTasks(response.data.tasks);
+        setTasks(response.data.tasks)
       });
     setProfileColor(currentProfile.color);
   };
