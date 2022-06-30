@@ -172,6 +172,7 @@ function App() {
           <Route path="/notfound" element={<Error />} />
         </Routes>
       </main>
+      <div className="p-16"></div>
       <footer>
         <Footer />
       </footer>
