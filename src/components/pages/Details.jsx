@@ -84,11 +84,9 @@ export default function Details({
           />
         </div>
         <h2>{profileList}</h2>
-        <p className="text-white tracking-tight leading-6 text-2xl pb-8 h-48 px-80 pt-80">
+        <p className="text-white tracking-tight leading-6 text-2xl h-48 pt-6">
           You are currently logged in with {currentAccount.email}.
         </p>
-
-        <h1 className="p-10"></h1>
       </div>
     </main>
   );

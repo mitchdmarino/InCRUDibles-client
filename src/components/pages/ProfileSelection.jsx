@@ -20,7 +20,7 @@ export default function ProfileSelection({
     )
   })
   // A list of all profiles are shown on this page.
-  // This is where the user can access their personal profile.
+  // This is where the user can access their personal profle
   return (
     <div className="">
       <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
