@@ -150,9 +150,9 @@ export default function TasksPage({
           <table class="table-auto mx-auto bg-gradient-to-r from-pink-400 to-yellow-400 border-2">
             <thead>
               <tr>
-                <th className="w-[300px] text-3xl pb-6">Complete</th>
-                <th className="w-[300px] text-3xl pb-6">Task</th>
-                <th className="w-[300px] text-3xl pb-6">Delete</th>
+                <th className="w-[300px] text-3xl p-2">Complete</th>
+                <th className="w-[300px] text-3xl p-2">Task</th>
+                <th className="w-[300px] text-3xl p-2">Delete</th>
               </tr>
             </thead>
             <tbody className="mx-auto">{taskList}</tbody>
