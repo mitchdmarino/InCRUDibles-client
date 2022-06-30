@@ -1,8 +1,10 @@
-import {useState} from 'react'
-import axios from 'axios'
+import { useState } from "react";
+import axios from "axios";
 import React from "react";
+
 export default function ProfileForm({handleSubmit, initialForm, isCreate}) {
   
+
   const [form, setForm] = useState(initialForm);
   return (
     <form onSubmit={(e) => handleSubmit(e, form, setForm)}>
@@ -18,23 +20,23 @@ export default function ProfileForm({handleSubmit, initialForm, isCreate}) {
           onChange={(e) => setForm({ ...form, name: e.target.value })}
           required
         />
-        <select
-          className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500 h-10"
+        <input
+          className=" font-semibold shadow-lg shadow-indigo-500/40 text-blue-500 h-10"
           name="color"
-          type="dropdown"
+          type="color"
           id="color"
           value={form.color}
           onChange={(e) => setForm({ ...form, color: e.target.value })}
           required
-        >
-          <option value="#F06666">Red</option>
+        />
+        {/* <option value="#F06666">Red</option>
           <option value="#F89A4C">Orange</option>
           <option value="#EEE86D">Yellow</option>
           <option value="#52F49F">Green</option>
           <option value="#6699F0">Blue</option>
           <option value="#9F6DE1">Purple</option>
           <option value="#F08CD2">Pink</option>
-        </select>
+        </select> */}
       </div>
       <br></br>
     { isCreate ? 
@@ -53,5 +55,5 @@ export default function ProfileForm({handleSubmit, initialForm, isCreate}) {
       
     }
     </form>
-  )
+  );
 }

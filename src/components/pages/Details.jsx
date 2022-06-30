@@ -2,43 +2,54 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Profile from "../Profile";
 import ProfileForm from "../ProfileForm";
-import Date from "../Date"
+import Date from "../Date";
 import { useNavigate } from "react-router-dom";
 
-export default function Details({ currentAccount, handleLogout, profiles, setProfiles }) {
-  let navigate=useNavigate()
+export default function Details({
+  currentAccount,
+  handleLogout,
+  profiles,
+  setProfiles,
+}) {
+  let navigate = useNavigate();
 
   // get all the profiles from App state and render a profile component for them
-  const profileList = profiles.map(profile => {
+  const profileList = profiles.map((profile) => {
     return (
-      <Profile key={`${profile._id}`} profile={profile} setProfiles={setProfiles} showEdit={true} />
-    )
-  })
-  
-  // handle the submission of create Profile form  
+      <Profile
+        key={`${profile._id}`}
+        profile={profile}
+        setProfiles={setProfiles}
+        showEdit={true}
+      />
+    );
+  });
+
+  // handle the submission of create Profile form
   const handleCreateProfile = (e, form, setForm) => {
-    e.preventDefault()
+    e.preventDefault();
     const token = localStorage.getItem("jwt");
     const options = {
       headers: {
         Authorization: token,
       },
-    }
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`, form ,options)
-      .then(response => {
-        console.log(response)
+    };
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`, form, options)
+      .then((response) => {
+        console.log(response);
         // set the state of profiles to be the most updated version (including new profile)
-        setProfiles(response.data.profiles)
+        setProfiles(response.data.profiles);
       })
-      .catch(err=> {
-        console.log(err)
-        navigate("/notfound", { replace: true })
-      })
+      .catch((err) => {
+        console.log(err);
+        navigate("/notfound", { replace: true });
+      });
     setForm({
-      name: '', 
-      color: 'red'
-    })
-  }
+      name: "",
+      color: "#FF0000",
+    });
+  };
 
   return (
     <main>
@@ -63,7 +74,10 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
 
         <div className="">
           <ProfileForm
-            initialForm={{ name: "", color: "red" }}
+            initialForm={{
+              name: "",
+              color: "#FF0000",
+            }}
             handleSubmit={handleCreateProfile}
             setProfiles={setProfiles}
             isCreate={true}
@@ -77,5 +91,5 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
         <h1 className="p-10"></h1>
       </div>
     </main>
-  )
+  );
 }
