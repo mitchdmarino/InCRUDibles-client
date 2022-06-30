@@ -27,17 +27,21 @@ export default function ProfileForm({handleSubmit, initialForm}) {
           onChange={(e) => setForm({ ...form, color: e.target.value })}
           required
         >
-          <option value="red">Red</option>
-          <option value="chartreuse">Green</option>
-          <option value="blue">Blue</option>
-          <option value="hotpink">Pink</option>
-          <option value="orange">Orange</option>
+          <option value="#F06666">Red</option>
+          <option value="#F89A4C">Orange</option>
+          <option value="#EEE86D">Yellow</option>
+          <option value="#52F49F">Green</option>
+          <option value="#6699F0">Blue</option>
+          <option value="#9F6DE1">Purple</option>
+          <option value="#F08CD2">Pink</option>
         </select>
       </div>
       <br></br>
       <div className="flex justify-center">
         <div className="flex justify-center bg-white text-blue-500 hover:bg-blue-500 hover:text-white rounded-full font-semibold shadow-lg shadow-indigo-500/40 h-10 w-[80px]">
-          <button className="mx-auto" type="submit">Submit</button>
+          <button className="mx-auto" type="submit">
+            Submit
+          </button>
         </div>
       </div>
     </form>

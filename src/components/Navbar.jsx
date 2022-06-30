@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Navbar as Nav } from 'flowbite-react';
+import { Navbar as Nav, Dropdown, Avatar } from 'flowbite-react';
 
-export default function Navbar({ currentAccount, handleLogout }) {
+
+export default function Navbar({ currentAccount, handleLogout, currentProfile }) {
   const loggedIn = (
     <>
       {/* if the Account is logged in .. */}
@@ -55,6 +56,9 @@ export default function Navbar({ currentAccount, handleLogout }) {
       </Link>
     </>
   )
+
+  
+
   return (
     // <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
     //   <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -89,6 +93,15 @@ export default function Navbar({ currentAccount, handleLogout }) {
       </Nav.Brand>
       <Nav.Toggle />
       <Nav.Collapse>
+      {
+        currentProfile ? 
+        <Link to="/profileselection" className="hover:text-blue-500 font-semibold block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white ">
+        <div style={{backgroundColor:`${currentProfile.color}`}}className=" rounded-full h-5 w-5 ">
+
+        </div>
+      </Link>: 
+      ''
+      }
         <Link
           className="hover:text-blue-500 font-semibold block py-2 pr-4 pl-3 text-white bg-blue-800 rounded md:bg-transparent md:text-blue-800 md:p-0 dark:text-white"
           to="/"

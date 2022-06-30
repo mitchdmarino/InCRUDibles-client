@@ -44,11 +44,10 @@ export default function Register({ currentAccount, setCurrentAccount }) {
 
   // conditionally render a navigate component
   if (currentAccount) {
-    return <Navigate to="/details" />;
+    return <Navigate to="/profileselection" />;
   }
 
   return (
-   
       <main>
           <div>
             <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-32 h-48">
@@ -65,61 +64,63 @@ export default function Register({ currentAccount, setCurrentAccount }) {
               {msg}
             </p>
 
-            <form onSubmit={handleSubmit}>
-              <div className="pt-16 h-24">
-                <label htmlFor="name"></label>
-                <input
-                  className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={name}
-                  placeholder="Organization Name"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <br></br>
-              <div className="pt-10 h-22">
-                <label htmlFor="email"></label>
-                <input
-                  className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
-                  type="text"
-                  name="email"
-                  id="email"
-                  value={email}
-                  placeholder="Email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <br></br>
-              <div className="pt-7 h-20">
-                <label htmlFor="password"></label>
-                <input
-                  className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
-                  type="text"
-                  name="password"
-                  id="password"
-                  value={password}
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <br></br>
 
-              <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white p-8">
-                Are you ready to take on today's challenges with excitement?
-              </h1>
-
-              <button
-                type="submit"
-                className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-2.5 bg-blue-800 shadow-lg shadow-indigo-500/40 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
-              >
-                Register
-              </button>
-
-              <h1 className="p-20"></h1>
-            </form>
+        <form onSubmit={handleSubmit}>
+          <div className="pt-16 h-24">
+            <label htmlFor="name"></label>
+            <input
+              className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              placeholder="Organization Name"
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
-      </main>
-  )
+          <br></br>
+          <div className="pt-10 h-22">
+            <label htmlFor="email"></label>
+            <input
+              className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
+              type="text"
+              name="email"
+              id="email"
+              value={email}
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <br></br>
+          <div className="pt-7 h-20">
+            <label htmlFor="password"></label>
+            <input
+              className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
+              type="text"
+              name="password"
+              id="password"
+              value={password}
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <br></br>
+
+          <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white p-8">
+            Are you ready to take on today's challenges with excitement?
+          </h1>
+
+          <button
+            type="submit"
+            className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-2.5 bg-blue-600 shadow-lg shadow-indigo-500/40 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+          >
+            Register
+          </button>
+
+
+          <h1 className="p-20"></h1>
+        </form>
+      </div>
+    </main>
+  );
 }
