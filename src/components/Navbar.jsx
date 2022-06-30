@@ -103,7 +103,7 @@ export default function Navbar({ currentAccount, handleLogout, currentProfile })
         {
           currentProfile ? 
           <Link to="/profileselection" className="hover:text-blue-500 font-semibold block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white ">
-          <div style={{backgroundColor:`${currentProfile.color}`}}className="text-center text-white rounded-full h-6 w-6 ">
+          <div style={{backgroundColor:`${currentProfile.color}`}}className="text-center text-white rounded-full h-6 w-6">
             {currentProfile.name.charAt(0)}
           </div>
         </Link>: 

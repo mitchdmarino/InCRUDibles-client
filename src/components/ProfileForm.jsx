@@ -21,7 +21,7 @@ export default function ProfileForm({handleSubmit, initialForm, isCreate}) {
           required
         />
         <input
-          className=" font-semibold shadow-lg shadow-indigo-500/40 text-blue-500 h-10"
+          className="rounded-full bg-white p-2 w-24 font-semibold shadow-lg shadow-indigo-500/40 text-blue-500 h-10"
           name="color"
           type="color"
           id="color"
@@ -41,13 +41,13 @@ export default function ProfileForm({handleSubmit, initialForm, isCreate}) {
       <br></br>
     { isCreate ? 
       <div className="flex justify-center">
-      <div className="flex justify-center bg-white text-blue-500 hover:bg-blue-500 hover:text-white rounded-full font-semibold shadow-lg shadow-indigo-500/40 h-10 w-[80px]">
+      <div className="flex justify-center bg-white text-blue-500 hover:bg-blue-700 hover:text-white rounded-full font-semibold shadow-lg shadow-indigo-500/40 h-10 w-[80px]">
         <button className="mx-auto" type="submit">
           Submit
         </button>
       </div>
     </div>: 
-    <div className="flex justify-center bg-white ml-[180px] mt-[-25px] text-blue-500 hover:bg-blue-500 hover:text-white rounded-full font-semibold shadow-lg shadow-indigo-500/40 h-10 w-[80px]">
+    <div className="flex justify-center bg-white ml-[180px] mt-[-25px] text-blue-500 hover:bg-blue-700 hover:text-white rounded-full font-semibold shadow-lg shadow-indigo-500/40 h-10 w-[80px]">
       <button className="" type="submit">
         Submit
       </button>

@@ -94,11 +94,11 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
               
               {
                 showForm ? 
-                <button className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white h-10 w-[80px] mt-2"
+                <button className="rounded-full font-semibold bg-white hover:bg-blue-700 hover:text-white h-10 w-[80px] mt-2"
                 onClick={() => setShowForm(!showForm)}>
                   Cancel
                 </button>: 
-                <button className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white h-10 w-[80px] mt-2"
+                <button className="rounded-full font-semibold bg-white hover:bg-blue-700 hover:text-white h-10 w-[80px] mt-2"
                 onClick={() => setShowForm(!showForm)}>
                   Edit
                 </button>
@@ -106,7 +106,7 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
               
               {showForm ? (
                 <button
-                  className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white  h-10 w-[80px] mt-2"
+                  className="rounded-full font-semibold bg-white hover:bg-blue-700 hover:text-white  h-10 w-[80px] mt-2"
                   onClick={handleDeleteProfile}
                 >
                   Delete

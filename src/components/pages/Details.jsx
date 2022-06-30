@@ -76,7 +76,7 @@ export default function Details({
           <ProfileForm
             initialForm={{
               name: "",
-              color: "#FF0000",
+              color: "#3C97EC",
             }}
             handleSubmit={handleCreateProfile}
             setProfiles={setProfiles}
