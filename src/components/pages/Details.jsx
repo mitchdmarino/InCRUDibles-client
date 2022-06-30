@@ -80,6 +80,7 @@ export default function Details({
             }}
             handleSubmit={handleCreateProfile}
             setProfiles={setProfiles}
+            isCreate={true}
           />
         </div>
         <h2>{profileList}</h2>

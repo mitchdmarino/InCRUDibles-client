@@ -93,7 +93,7 @@ export default function Login({
             />
           </div>
 
-          <div className="pt-6 h-24">
+          <div className="pt-6 h-20">
             <label htmlFor="password"></label>
             <input
               className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
@@ -108,7 +108,7 @@ export default function Login({
           <div className="pt-10 h-24">
             <button
               type="submit"
-              className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-3 bg-blue-600 shadow-lg shadow-indigo-500/40 w-48 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+              className="text-white p-0 font-semibold dark:text-white rounded-full p-3 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-pink-400 hover:to-yellow-400 shadow-lg shadow-indigo-500/40 w-48 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
             >
               {" "}
               Login{" "}
@@ -127,5 +127,5 @@ export default function Login({
         </form>
       </div>
     </main>
-  );
+  )
 }

@@ -87,7 +87,7 @@ export default function Navbar({ currentAccount, handleLogout, currentProfile })
       <Nav.Brand href="/">
         <span 
         /*className="hover:text-blue-500 self-center whitespace-nowrap text-2xl font-bold text-blue-700 p-1.5"*/
-        className="font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-800 to-blue-500 self-center whitespace-nowrap p-1">
+        className="font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-l from-purple-800 to-blue-500 self-center whitespace-nowrap p-1">
           CheckMate
         </span>
       </Nav.Brand>
