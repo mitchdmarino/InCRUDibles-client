@@ -163,7 +163,6 @@ export default function TasksPage({
           </table>
         </div>
       </div>
-      <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white p-8 flex justify-end"></h3>
     </main>
   )
 }
