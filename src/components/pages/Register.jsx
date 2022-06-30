@@ -48,22 +48,22 @@ export default function Register({ currentAccount, setCurrentAccount }) {
   }
 
   return (
-      <main>
-          <div>
-            <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-32 h-48">
-              Create Account
-            </h1>
-            <p className="text-white tracking-tight leading-6 text-2xl pt-10">
-              Enter your Organization Name, Email, and Password to sign up.
-              <Link to="/login" className="text-white text-decoration-line: underline hover:text-blue-400">
-                {"  "}
-                Already have an account with us?
-              </Link>
-            </p>
-            <p className="text-white tracking-tight leading-6 text-2xl">
-              {msg}
-            </p>
-
+    <main>
+      <div>
+        <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-32 h-48">
+          Create Account
+        </h1>
+        <p className="text-white tracking-tight leading-6 text-2xl pt-10">
+          Enter your Organization Name, Email, and Password to sign up.
+          <Link
+            to="/login"
+            className="text-white text-decoration-line: underline hover:text-blue-400"
+          >
+            {"  "}
+            Already have an account with us?
+          </Link>
+        </p>
+        <p className="text-white tracking-tight leading-6 text-2xl">{msg}</p>
 
         <form onSubmit={handleSubmit}>
           <div className="pt-16 h-24">
@@ -96,7 +96,7 @@ export default function Register({ currentAccount, setCurrentAccount }) {
             <label htmlFor="password"></label>
             <input
               className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
-              type="text"
+              type="password"
               name="password"
               id="password"
               value={password}
@@ -116,7 +116,6 @@ export default function Register({ currentAccount, setCurrentAccount }) {
           >
             Register
           </button>
-
 
           <h1 className="p-20"></h1>
         </form>
