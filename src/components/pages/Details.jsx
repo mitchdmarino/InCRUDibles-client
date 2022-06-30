@@ -37,7 +37,7 @@ export default function Details({
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`, form, options)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         // set the state of profiles to be the most updated version (including new profile)
         setProfiles(response.data.profiles);
       })
