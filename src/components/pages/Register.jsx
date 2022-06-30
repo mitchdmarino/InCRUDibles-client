@@ -47,7 +47,7 @@ export default function Register({ currentAccount, setCurrentAccount }) {
 
   // conditionally render a navigate component
   if (currentAccount) {
-    return <Navigate to="/profileselection" />;
+    return <Navigate to="/details" />;
   }
 
   return (
