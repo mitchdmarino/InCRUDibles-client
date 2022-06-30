@@ -22,7 +22,7 @@ export default function TasksPage({
     "Stop Being Lazy",
     "That's a long list. It would be a shame if it kept growing.",
     "Just pick a task and do it already.",
-    "You're mom would be ashamed if she saw this list.",
+    "Your mom would be ashamed if she saw this list.",
     "Don't be a Disappointment",
   ]
   // The output is randomized, and the user will never know which title they will see!
