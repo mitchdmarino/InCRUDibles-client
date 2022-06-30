@@ -41,7 +41,6 @@ function App() {
           Authorization: token,
         },
       };
-
       axios
         .get(
           `${process.env.REACT_APP_SERVER_URL}/api-v1/account/${loggedInAccount.id}`,
@@ -77,21 +76,14 @@ function App() {
       localStorage.removeItem("jwt");
       // remove the profile cookie
       removeCookie("profile");
-      // set the Account in app state to null
+      // clear all States 
       setCurrentAccount(null);
+      setCurrentProfile('')
+      setProfiles([])
+      setTasks([])
     }
   };
-  // const handleSubmit = (e, form, setForm) => {
-  //   e.preventDefault();
-  //   axios
-  //     .put(`${process.env.REACT_APP_SERVER_URL}/bounties/${id}`)
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setBounty(response.data); // addd updated bounty to state
-  //       setShowForm(false); // hide form
-  //     })
-  //     .catch(console.warn);
-  // };
+
   return (
     <Router>
       <header>
