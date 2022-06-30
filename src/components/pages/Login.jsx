@@ -3,7 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { Navigate, Link } from "react-router-dom";
 
-export default function Login({ currentAccount, setCurrentAccount }) {
+export default function Login({ currentAccount, setCurrentAccount, setProfiles, setTasks }) {
   // state for the controlled form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +21,7 @@ export default function Login({ currentAccount, setCurrentAccount }) {
         `${process.env.REACT_APP_SERVER_URL}/api-v1/account/login`,
         reqBody
       );
+      
 
       // save the token in localstorage
       const { token } = response.data;
@@ -29,6 +30,24 @@ export default function Login({ currentAccount, setCurrentAccount }) {
       const decoded = jwt_decode(token);
       // set the Account in App's state to be the decoded token
       setCurrentAccount(decoded);
+      const options = {
+        headers: {
+          Authorization: token
+        },
+      };
+      axios
+        .get(
+          `${process.env.REACT_APP_SERVER_URL}/api-v1/account/${decoded.id}`,
+          options
+        )
+        .then((response) => {
+          setProfiles(response.data.profiles);
+          setTasks(response.data.tasks);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
     } catch (err) {
       console.warn(err);
       if (err.response) {
@@ -97,6 +116,7 @@ export default function Login({ currentAccount, setCurrentAccount }) {
               Become a member.
             </Link>
           </p>
+
 
           <h1 className="p-40"></h1>
         </form>

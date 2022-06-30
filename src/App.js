@@ -123,6 +123,8 @@ function App() {
               <Login
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
+                setProfiles={setProfiles}
+                setTasks={setTasks}
               />
             }
           />

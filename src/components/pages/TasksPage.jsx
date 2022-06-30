@@ -2,6 +2,7 @@ import axios from "axios";
 import ProfileForm from "../ProfileForm";
 import { useState, useEffect } from "react";
 import Task from "../Task";
+import Date from "../Date";
 
 export default function TasksPage({
   initialForm,
@@ -34,8 +35,8 @@ export default function TasksPage({
     "You Should Get These Done...",
     "You miss 100% of the shots you don't take -Michael Scott",
     "Stop Being Lazy",
-    "That's a long list, it would be a shame if it kept growing.",
-    "Just Pick a Task and Do it Already",
+    "That's a long list. It would be a shame if it kept growing.",
+    "Just pick a task and do it already.",
     "You're mom would be ashamed if she saw this list.",
     "Don't be a Disappointment"
   ];
@@ -55,9 +56,13 @@ export default function TasksPage({
     "Touch grass",
     "Call your parents",
     "Quit your job",
-    "Find a job",
+    "Stop complaining",
+    "Get a job",
     "Pay the bills",
     "Do your homework",
+    "Walk your dishes",
+    "Call your Grandmother",
+    "Find a girlfriend",
   ];
   const phMsg = phArr[Math.floor(Math.random() * phArr.length)];
 
@@ -78,11 +83,14 @@ export default function TasksPage({
   return (
     <main>
       <div>
-        <h1 className="pb-12 text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
+        <h1 className="pb-10 text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
           {msg}
         </h1>
+        <h2>
+          <Date />
+        </h2>
 
-        <form onSubmit={(e) => handleSubmit(e, form, setForm)}>
+        <form className="p-10" onSubmit={(e) => handleSubmit(e, form, setForm)}>
           <label
             className="text-white text-2xl font-semibold"
             htmlFor="description"
@@ -97,6 +105,7 @@ export default function TasksPage({
             value={form.description}
             onChange={(e) => setForm({ ...form, description: e.target.value })}
           />
+
           <label htmlFor="completed"></label>
           <input
             type="hidden"
@@ -130,22 +139,18 @@ export default function TasksPage({
             </svg>
           </button>
         </form>
-        <div className="text-white text-[20px] font-semibold p-3">
-        <table class="table-auto mx-auto">
-          <thead>
-            <tr>
-              <th className="w-[300px]">Task</th>
-              <th className="w-[300px]">Completed</th>
-              <th className="w-[300px]">Delete</th>
-            </tr>
-          </thead>
-          <tbody className="mx-auto">
-           
-               {taskList}
-       
-          </tbody>
-        </table>
-      </div>
+        <div className="text-white text-[20px] font-semibold p-8">
+          <table class="table-auto mx-auto">
+            <thead>
+              <tr>
+                <th className="w-[300px] text-3xl pb-6">Complete</th>
+                <th className="w-[300px] text-3xl pb-6">Task</th>
+                <th className="w-[300px] text-3xl pb-6">Delete</th>
+              </tr>
+            </thead>
+            <tbody className="mx-auto">{taskList}</tbody>
+          </table>
+        </div>
       </div>
       <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white p-8 flex justify-end"></h3>
     </main>
