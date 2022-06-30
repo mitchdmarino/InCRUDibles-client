@@ -3,7 +3,12 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { Navigate, Link } from "react-router-dom";
 
-export default function Login({ currentAccount, setCurrentAccount, setProfiles, setTasks }) {
+export default function Login({
+  currentAccount,
+  setCurrentAccount,
+  setProfiles,
+  setTasks,
+}) {
   // state for the controlled form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +26,6 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
         `${process.env.REACT_APP_SERVER_URL}/api-v1/account/login`,
         reqBody
       );
-      
 
       // save the token in localstorage
       const { token } = response.data;
@@ -32,7 +36,7 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
       setCurrentAccount(decoded);
       const options = {
         headers: {
-          Authorization: token
+          Authorization: token,
         },
       };
       axios
@@ -47,7 +51,6 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
         .catch((err) => {
           console.log(err);
         });
-
     } catch (err) {
       console.warn(err);
       if (err.response) {
@@ -91,7 +94,7 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
             <label htmlFor="password"></label>
             <input
               className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
-              type="text"
+              type="password"
               name="password"
               id="password"
               value={password}
@@ -116,7 +119,6 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
               Become a member.
             </Link>
           </p>
-
 
           <h1 className="p-40"></h1>
         </form>
