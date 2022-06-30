@@ -147,7 +147,7 @@ export default function TasksPage({
           Your list for: <Date />
         </h2>
         <div className="text-white text-[20px] font-semibold p-8">
-          <table class="table-auto mx-auto">
+          <table class="table-auto mx-auto bg-gradient-to-r from-pink-400 to-yellow-400 border-2">
             <thead>
               <tr>
                 <th className="w-[300px] text-3xl pb-6">Complete</th>
