@@ -6,9 +6,11 @@ import { useCookies } from 'react-cookie';
 
 export default function Profile ({profile, setProfiles, showEdit , setCurrentProfile }) {
   let navigate = useNavigate()
+  // showForm: choose whether or not to display the Edit form based on button click
   const [showForm, setShowForm] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['profile'])
 
+  // Edit profile on submission of edit form 
   const handleEditProfile = (e, form, setForm) => {
     e.preventDefault()
     const token = localStorage.getItem("jwt");
@@ -19,12 +21,15 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
     }
     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile/${profile._id}`, form ,options)
       .then(response => {
-        console.log(response)
         setProfiles(response.data.profiles)
+      })
+      .catch(err=> {
+        console.log(err)
       })
       setShowForm(false)
   }
 
+  // delete profile when delete button is clicked  
   const handleDeleteProfile = () => {
     const token = localStorage.getItem("jwt");
     const options = {
@@ -37,6 +42,9 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
         console.log(response)
         setProfiles(response.data.profiles)
       })
+      .catch(err => {
+        console.log(err)
+      })
       
     
   }
@@ -48,9 +56,10 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
 
   } 
   const handleNothing = () => {
-    console.log('nothing')
+    
   }
 
+  // styling for profile selection page (showEdit=false) vs account details page (showEdit=True)
   const styling = showEdit
     ? `z-0 text-white pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20 border-4 border-white`
     : `z-0 text-white pt-14 text-3xl font-semibold rounded-full w-[180px] h-[180px] mx-auto shadow-lg shadow-indigo-500/40 m-20 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out border-4 border-white`

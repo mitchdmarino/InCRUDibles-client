@@ -7,6 +7,8 @@ export default function ProfileSelection({
   setCurrentProfile,
 }) {
   // profiles --- array [profile1, profile2, ...]
+  // show a list of all profiles. showEdit prop will be false because 
+  // we don't want the edit option on this page, only on the account details page.
   const profileList = profiles.map((profile) => {
     return (
       <Profile

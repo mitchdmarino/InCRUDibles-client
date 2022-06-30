@@ -14,6 +14,7 @@ import "./App.css";
 import TasksPage from "./components/pages/TasksPage";
 import ProfileSelection from "./components/pages/ProfileSelection";
 import Details from "./components/pages/Details";
+import Error from './components/pages/Error'
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
@@ -41,12 +42,14 @@ function App() {
           Authorization: token,
         },
       };
+      // update with the account's latest information 
       axios
         .get(
           `${process.env.REACT_APP_SERVER_URL}/api-v1/account/${loggedInAccount.id}`,
           options
         )
         .then((response) => {
+          // set the profiles and tasks with the response from the server 
           setProfiles(response.data.profiles);
           setTasks(response.data.tasks);
           // check if there is a profile id cookie
@@ -64,7 +67,6 @@ function App() {
         });
     } else {
       setCurrentAccount(null);
-      console.log("hello");
     }
   }, []);
 
@@ -161,6 +163,13 @@ function App() {
                 setProfiles={setProfiles}
                 currentAccount={currentAccount}
                 setCurrentAccount={setCurrentAccount}
+              />
+            }
+          />
+          <Route
+            path="/notfound"
+            element={
+              <Error
               />
             }
           />

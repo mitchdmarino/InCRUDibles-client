@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Navigate, Link } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
 export default function Login({
   currentAccount,
@@ -9,6 +9,7 @@ export default function Login({
   setProfiles,
   setTasks,
 }) {
+  let navi = useNavigate()
   // state for the controlled form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -56,6 +57,8 @@ export default function Login({
       if (err.response) {
         if (err.response.status === 400) {
           setMsg(err.response.data.msg);
+        } else {
+          navi('/notfound', {replace:true})
         }
       }
     }

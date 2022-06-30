@@ -3,6 +3,7 @@ import ProfileForm from "../ProfileForm";
 import { useState, useEffect } from "react";
 import Task from "../Task";
 import Date from "../Date";
+import {useNavigate} from 'react-router-dom'
 
 export default function TasksPage({
   initialForm,
@@ -11,26 +12,10 @@ export default function TasksPage({
   profiles,
   currentProfile,
 }) {
+  let navigate = useNavigate()
   const [form, setForm] = useState({ completed: false, initialForm });
   const [msg, setMsg] = useState();
-  const handleSubmit = (e, form, setForm) => {
-    const token = localStorage.getItem("jwt");
-    const options = {
-      headers: {
-        Authorization: token,
-      },
-    };
-    e.preventDefault();
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/tasks`, form, options)
-      .then((response) => {
-        console.log(response.data.tasks);
-        setTasks(response.data.tasks);
-        setForm({ description: "", completed: false });
-      })
-
-      .catch(console.warn);
-  };
+  
   const msgArr = [
     "You Should Get These Done...",
     "You miss 100% of the shots you don't take -Michael Scott",
@@ -65,6 +50,28 @@ export default function TasksPage({
     "Find a girlfriend",
   ];
   const phMsg = phArr[Math.floor(Math.random() * phArr.length)];
+
+  const handleSubmit = (e, form, setForm) => {
+    const token = localStorage.getItem("jwt");
+    const options = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    e.preventDefault();
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/tasks`, form, options)
+      .then((response) => {
+        console.log(response.data.tasks);
+        setTasks(response.data.tasks);
+        setForm({ description: "", completed: false });
+      })
+
+      .catch(err => {
+        console.warn(err)
+        navigate('/notfound', {replace:true})
+      });
+  };
 
   const taskList = tasks.map((task, idx) => {
     return (

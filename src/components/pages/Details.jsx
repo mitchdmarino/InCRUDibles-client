@@ -3,18 +3,19 @@ import axios from "axios";
 import Profile from "../Profile";
 import ProfileForm from "../ProfileForm";
 import Date from "../Date"
+import { useNavigate } from "react-router-dom";
 
 export default function Details({ currentAccount, handleLogout, profiles, setProfiles }) {
-  // are my changes showign?
-  // state for the secret message (aka Account privileged data )
-  const [msg, setMsg] = useState("");
+  let navigate=useNavigate()
 
+  // get all the profiles from App state and render a profile component for them
   const profileList = profiles.map(profile => {
     return (
       <Profile key={`${profile._id}`} profile={profile} setProfiles={setProfiles} showEdit={true} />
     )
   })
-
+  
+  // handle the submission of create Profile form  
   const handleCreateProfile = (e, form, setForm) => {
     e.preventDefault()
     const token = localStorage.getItem("jwt");
@@ -26,7 +27,12 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
     axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`, form ,options)
       .then(response => {
         console.log(response)
+        // set the state of profiles to be the most updated version (including new profile)
         setProfiles(response.data.profiles)
+      })
+      .catch(err=> {
+        console.log(err)
+        navigate("/notfound", { replace: true })
       })
     setForm({
       name: '', 
@@ -63,7 +69,6 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
           />
         </div>
         <h2>{profileList}</h2>
-        <h3>{msg}</h3>
         <p className="text-white tracking-tight leading-6 text-2xl pb-8 h-48 px-80 pt-80">
           You are currently logged in with {currentAccount.email}.
         </p>

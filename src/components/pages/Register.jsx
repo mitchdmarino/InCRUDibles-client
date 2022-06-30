@@ -1,10 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Navigate, Link } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
 export default function Register({ currentAccount, setCurrentAccount }) {
   // state for the controlled form
+  let navi = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -37,6 +38,8 @@ export default function Register({ currentAccount, setCurrentAccount }) {
       if (err.response) {
         if (err.response.status === 400) {
           setMsg(err.response.data.msg);
+        } else {
+          navi("/notfound",{ replace: true })
         }
       }
     }
