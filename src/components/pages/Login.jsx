@@ -1,9 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Navigate, Link } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
-export default function Login({ currentAccount, setCurrentAccount, setProfiles, setTasks }) {
+export default function Login({
+  currentAccount,
+  setCurrentAccount,
+  setProfiles,
+  setTasks,
+}) {
+  let navi = useNavigate()
   // state for the controlled form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +27,6 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
         `${process.env.REACT_APP_SERVER_URL}/api-v1/account/login`,
         reqBody
       );
-      
 
       // save the token in localstorage
       const { token } = response.data;
@@ -32,7 +37,7 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
       setCurrentAccount(decoded);
       const options = {
         headers: {
-          Authorization: token
+          Authorization: token,
         },
       };
       axios
@@ -47,12 +52,13 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
         .catch((err) => {
           console.log(err);
         });
-
     } catch (err) {
       console.warn(err);
       if (err.response) {
         if (err.response.status === 400) {
           setMsg(err.response.data.msg);
+        } else {
+          navi('/notfound', {replace:true})
         }
       }
     }
@@ -87,11 +93,11 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
             />
           </div>
 
-          <div className="pt-6 h-24">
+          <div className="pt-6 h-20">
             <label htmlFor="password"></label>
             <input
               className="rounded-full font-semibold shadow-lg shadow-indigo-500/40 text-blue-500"
-              type="text"
+              type="password"
               name="password"
               id="password"
               value={password}
@@ -102,7 +108,7 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
           <div className="pt-10 h-24">
             <button
               type="submit"
-              className="hover:bg-white hover:text-blue-500 text-white p-0 font-semibold dark:text-white rounded-full p-3 bg-blue-600 shadow-lg shadow-indigo-500/40 w-48 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+              className="text-white p-0 font-semibold dark:text-white rounded-full p-3 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-pink-400 hover:to-yellow-400 shadow-lg shadow-indigo-500/40 w-48 hover:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
             >
               {" "}
               Login{" "}
@@ -117,10 +123,9 @@ export default function Login({ currentAccount, setCurrentAccount, setProfiles, 
             </Link>
           </p>
 
-
           <h1 className="p-40"></h1>
         </form>
       </div>
     </main>
-  );
+  )
 }

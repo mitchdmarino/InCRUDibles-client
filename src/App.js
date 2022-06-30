@@ -14,6 +14,7 @@ import "./App.css";
 import TasksPage from "./components/pages/TasksPage";
 import ProfileSelection from "./components/pages/ProfileSelection";
 import Details from "./components/pages/Details";
+import Error from "./components/pages/Error";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
@@ -33,7 +34,7 @@ function App() {
       // if so, we will decode it and set the Account in app state
       const loggedInAccount = jwt_decode(token);
       setCurrentAccount(loggedInAccount);
-      console.log(loggedInAccount);
+      //console.log(loggedInAccount);
 
       //  make the auth headers
       const options = {
@@ -41,12 +42,14 @@ function App() {
           Authorization: token,
         },
       };
+      // update with the account's latest information
       axios
         .get(
           `${process.env.REACT_APP_SERVER_URL}/api-v1/account/${loggedInAccount.id}`,
           options
         )
         .then((response) => {
+          // set the profiles and tasks with the response from the server
           setProfiles(response.data.profiles);
           setTasks(response.data.tasks);
           // check if there is a profile id cookie
@@ -64,7 +67,6 @@ function App() {
         });
     } else {
       setCurrentAccount(null);
-      console.log("hello");
     }
   }, []);
 
@@ -76,18 +78,22 @@ function App() {
       localStorage.removeItem("jwt");
       // remove the profile cookie
       removeCookie("profile");
-      // clear all States 
+      // clear all States
       setCurrentAccount(null);
-      setCurrentProfile('')
-      setProfiles([])
-      setTasks([])
+      setCurrentProfile("");
+      setProfiles([]);
+      setTasks([]);
     }
   };
 
   return (
     <Router>
       <header>
-        <Navbar currentAccount={currentAccount} handleLogout={handleLogout} currentProfile={currentProfile} />
+        <Navbar
+          currentAccount={currentAccount}
+          handleLogout={handleLogout}
+          currentProfile={currentProfile}
+        />
       </header>
       <main>
         <Routes>
@@ -164,6 +170,7 @@ function App() {
               />
             }
           />
+          <Route path="/notfound" element={<Error />} />
         </Routes>
       </main>
     </Router>

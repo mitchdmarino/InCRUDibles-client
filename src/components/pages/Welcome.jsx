@@ -16,7 +16,7 @@ export default function Welcome() {
         <h3 className="text-white tracking-tight text-4xl self-center font-bold dark:text-white p-2">
           Ready to join?{" "}
           <Link
-            className="hover:bg-white hover:text-blue-600 text-xl text-white p-0 dark:text-white display: inline-block  rounded-full p-2.5 bg-blue-800 shadow-lg shadow-indigo-500/40 over:-translate-y-1 hover:scale-110 transition duration-150 ease-in-out"
+            className="text-2xl p-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-pink-400 hover:to-yellow-400"
             to="/register"
           >
             {" "}
@@ -27,7 +27,9 @@ export default function Welcome() {
         <h3 className="text-white tracking-tight text-4xl self-center text-left justify-start font-bold dark:text-white pl-30 pt-20 pb-4 ml-12 flex-1 ">
           See the Big Picture.
         </h3>
+
         <p className="text-white tracking-tight leading-6 text-2xl pb-8 h-48 ml-3 pr-70 text-left ">
+
           Use CheckMate to achieve your goals and get more out of your time -
           efficiently. Create customized tasks to effectively plan your day or
           week for maximum productivity and accomplish more everyday.

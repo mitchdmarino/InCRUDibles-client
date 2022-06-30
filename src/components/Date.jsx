@@ -1,4 +1,3 @@
-import { getByPlaceholderText } from "@testing-library/react"
 import React from "react"
 
 export default function displayDate () {
@@ -7,8 +6,10 @@ export default function displayDate () {
 
     return (
       <div>
-        <h2 className="text-white">
-        {`${fullDate.getMonth()+1} / ${fullDate.getDate()} / ${fullDate.getFullYear()}`}
+        <h2 className="text-white tracking-tight text-2xl">
+          {`${
+            fullDate.getMonth() + 1
+          } / ${fullDate.getDate()} / ${fullDate.getFullYear()}`}
         </h2>
       </div>
     )

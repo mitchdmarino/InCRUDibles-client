@@ -5,18 +5,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function Task({ task, currentProfile, profiles, setTasks }) {
-  const [profileColor, setProfileColor] = useState("white");
+  const [profileColor, setProfileColor] = useState("");
 
   useEffect(() => {
     if (task.profile) {
-      console.log(task.profile.color);
+      //console.log(task.profile.color);
       setProfileColor(task.profile.color);
     }
-    console.log(task);
   }, []);
 
   const handlecompletedTask = (e) => {
-    console.log(currentProfile);
     const token = localStorage.getItem("jwt");
     const options = {
       headers: {
@@ -26,20 +24,13 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
     axios
       .put(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/tasks/${task._id}`,
-        { completed: true },
+        { completed: true, profile: currentProfile._id },
         options
       )
       .then((response) => {
         // setTasks({ completed: true });
       });
-    //
-    axios
-      .post(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/tasks/${task._id}/profile/${currentProfile._id}`,
-        {},
-        options
-      )
-      .then((response) => {});
+
     const loggedInAccount = jwt_decode(token);
     axios
       .get(
@@ -111,12 +102,12 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
-              className="text-black"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              className="text-white"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
@@ -136,12 +127,12 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
               className="text-white"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
             />
           </svg>
