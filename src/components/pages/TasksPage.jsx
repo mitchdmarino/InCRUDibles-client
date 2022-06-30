@@ -83,12 +83,12 @@ export default function TasksPage({
   return (
     <main>
       <div>
-        <h1 className="pb-10 text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
-          {msg}
-        </h1>
         <h2>
           <Date />
         </h2>
+        <h1 className="pb-10 text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white pt-20">
+          {msg}
+        </h1>
 
         <form className="p-10" onSubmit={(e) => handleSubmit(e, form, setForm)}>
           <label
