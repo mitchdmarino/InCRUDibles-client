@@ -13,7 +13,7 @@ export default function Details({
 }) {
   let navigate = useNavigate();
 
-  // get all the profiles from App state and render a profile component for them
+  // All the profiles from App state are gathered and are rendered with a profile component.
   const profileList = profiles.map((profile) => {
     return (
       <Profile
@@ -25,7 +25,7 @@ export default function Details({
     );
   });
 
-  // handle the submission of create Profile form
+  // This handles the submission of a profile creation form.
   const handleCreateProfile = (e, form, setForm) => {
     e.preventDefault();
     const token = localStorage.getItem("jwt");
@@ -37,8 +37,7 @@ export default function Details({
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile`, form, options)
       .then((response) => {
-        // console.log(response);
-        // set the state of profiles to be the most updated version (including new profile)
+        // The state of the profiles are set to be the most updated version.
         setProfiles(response.data.profiles);
       })
       .catch((err) => {
@@ -51,6 +50,8 @@ export default function Details({
     });
   };
 
+  // This page displays a form to create a new profile. 
+  // Once a profile is created, it can be edited or deleted on this page.
   return (
     <main>
       <div>
@@ -61,7 +62,6 @@ export default function Details({
           <h2 className="text-white tracking-tight leading-6 text-2xl pb-8 h-20 pt-10 flex justify-end pr-8">
             <Date />
           </h2>
-          {/* {currentAccount.name} */}
         </div>
 
         <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white p-6">
