@@ -1,15 +1,14 @@
-import React from "react";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
-import { useState } from "react";
-import { useEffect } from "react";
+import React from "react"
+import axios from "axios"
+import jwt_decode from "jwt-decode"
+import { useState } from "react"
+import { useEffect } from "react"
 
 export default function Task({ task, currentProfile, profiles, setTasks }) {
   const [profileColor, setProfileColor] = useState("");
 
   useEffect(() => {
     if (task.profile) {
-      //console.log(task.profile.color);
       setProfileColor(task.profile.color);
     }
   }, []);
@@ -29,9 +28,9 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
       )
       .then((response) => {
         // setTasks({ completed: true });
-      });
+      })
 
-    const loggedInAccount = jwt_decode(token);
+    const loggedInAccount = jwt_decode(token)
     axios
       .get(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/account/${loggedInAccount.id}`,
@@ -64,30 +63,10 @@ export default function Task({ task, currentProfile, profiles, setTasks }) {
         options
       )
       .then((response) => {
-        setTasks(response.data.tasks);
-      });
-  };
+        setTasks(response.data.tasks)
+      })
+  }
 
-  // let bGColor = "";
-  // if (task.profile) {
-  //   if (task.profile.color) {
-  //     bGColor = task.profile.color
-  //     // console.log(bGColor)
-
-  //     // const colorProfile = profiles.find(
-  //     //   (profile) => profile._id === task.profile
-  //     // );
-  //     // // console.log(colorProfile.color);
-  //     // // console.log(task.profile);
-  //     // // console.log(profiles);
-  //     // if (colorProfile) {
-  //     //   bGColor = colorProfile.color;
-  //     // }
-
-  //     // console.log(bGColor, "inside");
-  //   }
-  // }
-  // console.log(bGColor, "outside");
   return (
     <>
       <td>
