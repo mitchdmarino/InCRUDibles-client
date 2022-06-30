@@ -7,21 +7,21 @@ export default function Navbar({ currentAccount, handleLogout, currentProfile })
     <>
       {/* if the Account is logged in .. */}
       <Link
-        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-800 md:p-0 dark:text-white"
         to="/taskspage"
       >
         Tasks
       </Link>
 
       <Link
-        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-800 md:p-0 dark:text-white"
         to="/profileselection"
       >
         Profiles
       </Link>
 
       <Link
-        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-800 md:p-0 dark:text-white"
         to="/details"
       >
         Account Details
@@ -29,7 +29,7 @@ export default function Navbar({ currentAccount, handleLogout, currentProfile })
 
 
       <Link
-        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+        className="hover:text-blue-500 block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-800 md:p-0 dark:text-white"
         to="/"
       >
         <span onClick={handleLogout}>Logout</span>
@@ -85,7 +85,9 @@ export default function Navbar({ currentAccount, handleLogout, currentProfile })
     // </nav>
     <Nav fluid={true} rounded={true}>
       <Nav.Brand href="/">
-        <span className="hover:text-blue-500 self-center whitespace-nowrap text-2xl font-bold text-blue-700 p-1.5">
+        <span 
+        /*className="hover:text-blue-500 self-center whitespace-nowrap text-2xl font-bold text-blue-700 p-1.5"*/
+        className="font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-800 to-blue-500 self-center whitespace-nowrap p-1">
           CheckMate
         </span>
       </Nav.Brand>
@@ -101,7 +103,7 @@ export default function Navbar({ currentAccount, handleLogout, currentProfile })
       ''
       }
         <Link
-          className="hover:text-blue-500 font-semibold block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+          className="hover:text-blue-500 font-semibold block py-2 pr-4 pl-3 text-white bg-blue-800 rounded md:bg-transparent md:text-blue-800 md:p-0 dark:text-white"
           to="/"
         >
           Home
