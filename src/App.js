@@ -9,6 +9,7 @@ import Welcome from "./components/pages/Welcome";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import jwt_decode from "jwt-decode";
 import "./App.css";
 import TasksPage from "./components/pages/TasksPage";
@@ -171,6 +172,9 @@ function App() {
           <Route path="/notfound" element={<Error />} />
         </Routes>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </Router>
   );
 }
