@@ -4,50 +4,52 @@ import jwt_decode from "jwt-decode";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 
 export default function Register({ currentAccount, setCurrentAccount }) {
-  // state for the controlled form
+  // This is the state for the controlled form.
   let navi = useNavigate()
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [msg, setMsg] = useState("");
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [name, setName] = useState("")
+  const [msg, setMsg] = useState("")
 
+  // This event handler handles the submit.
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      // post form data to the backend
+      // The form data is posted to the backend.
       const reqBody = {
         name,
         email,
         password,
-      };
+      }
 
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/account/register`,
         reqBody
-      );
+      )
 
-      // save the token in localstorage
-      const { token } = response.data;
-      localStorage.setItem("jwt", token);
-      // decode the token
-      const decoded = jwt_decode(token);
-      // set the Account in App's state to be the decoded token
-      setCurrentAccount(decoded);
+      // The token is saved in local storage.
+      const { token } = response.data
+      localStorage.setItem("jwt", token)
+      // The token is decoded
+      const decoded = jwt_decode(token)
+      // The Account is set in App's state to be the decoded token.
+      setCurrentAccount(decoded)
     } catch (err) {
-      console.warn(err);
+      console.warn(err)
       if (err.response) {
         if (err.response.status === 400) {
-          setMsg(err.response.data.msg);
+          setMsg(err.response.data.msg)
         } else {
-          navi("/notfound",{ replace: true })
+          navi("/notfound", { replace: true })
         }
       }
     }
-  };
+  }
 
-  // conditionally render a navigate component
+  // A navigate component is conditionally rendered.
+  // If the current account is valid, the details page is rendered.
   if (currentAccount) {
-    return <Navigate to="/details" />;
+    return <Navigate to="/details" />
   }
 
   return (

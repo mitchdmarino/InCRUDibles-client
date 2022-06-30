@@ -12,10 +12,10 @@ export default function TasksPage({
   profiles,
   currentProfile,
 }) {
-  let navigate = useNavigate();
-  const [form, setForm] = useState({ completed: false, initialForm });
-  const [msg, setMsg] = useState();
-
+  let navigate = useNavigate()
+  const [form, setForm] = useState({ completed: false, initialForm })
+  const [msg, setMsg] = useState()
+  // This array is used for displaying a variety of titles on the task page.
   const msgArr = [
     "You Should Get These Done...",
     "You miss 100% of the shots you don't take -Michael Scott",
@@ -24,12 +24,12 @@ export default function TasksPage({
     "Just pick a task and do it already.",
     "Your mom would be ashamed if she saw this list.",
     "Don't be a Disappointment",
-  ];
-
+  ]
+  // The output is randomized, and the user will never know which title they will see!
   useEffect(() => {
-    setMsg(msgArr[Math.floor(Math.random() * msgArr.length)]);
-  }, []);
-
+    setMsg(msgArr[Math.floor(Math.random() * msgArr.length)])
+  }, [])
+  // This array is used for displaying a variety of placeholders on the new task form.
   const phArr = [
     "Do the dishes",
     "Mow the lawn",
@@ -48,31 +48,32 @@ export default function TasksPage({
     "Walk your dishes",
     "Call your Grandmother",
     "Find a girlfriend",
-  ];
-  const phMsg = phArr[Math.floor(Math.random() * phArr.length)];
+  ]
+  // The placeholders are randomized and can help the user while they fill out their list.
+  const phMsg = phArr[Math.floor(Math.random() * phArr.length)]
 
+  // The submit function is handled.
   const handleSubmit = (e, form, setForm) => {
-    const token = localStorage.getItem("jwt");
+    const token = localStorage.getItem("jwt")
     const options = {
       headers: {
         Authorization: token,
       },
-    };
-    e.preventDefault();
+    }
+    e.preventDefault()
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/tasks`, form, options)
       .then((response) => {
-        console.log(response.data.tasks);
-        setTasks(response.data.tasks);
-        setForm({ description: "", completed: false });
+        setTasks(response.data.tasks)
+        setForm({ description: "", completed: false })
       })
-
       .catch((err) => {
-        console.warn(err);
-        navigate("/notfound", { replace: true });
-      });
-  };
+        console.warn(err)
+        navigate("/notfound", { replace: true })
+      })
+  }
 
+  // The list of tasks is mapped out and displayed on a table.
   const taskList = tasks.map((task, idx) => {
     return (
       <tr key={task._id} className="rounded-full border-white border-2 p-4 m-4">
@@ -84,9 +85,12 @@ export default function TasksPage({
           setTasks={setTasks}
         />
       </tr>
-    );
-  });
+    )
+  })
 
+  // This page renders a table of all the tasks.
+  // Users have the ability to complete tasks by marking them with their profile icon, and they can delete the tasks if they choose.
+  // The date is displayed at the top of the page, as well. 
   return (
     <main>
       <div>
@@ -161,5 +165,5 @@ export default function TasksPage({
       </div>
       <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white p-8 flex justify-end"></h3>
     </main>
-  );
+  )
 }

@@ -10,63 +10,60 @@ export default function Login({
   setTasks,
 }) {
   let navi = useNavigate()
-  // state for the controlled form
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
+  // This is the state for the controlled form
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [msg, setMsg] = useState("")
 
+  // This event handler controls the submit functonality.
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      // post form data to the backend
+      // The form data s posted to the backend.
       const reqBody = {
         email,
         password,
-      };
+      }
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/account/login`,
         reqBody
-      );
+      )
 
-      // save the token in localstorage
-      const { token } = response.data;
-      localStorage.setItem("jwt", token);
-      // decode the token
-      const decoded = jwt_decode(token);
-      // set the Account in App's state to be the decoded token
-      setCurrentAccount(decoded);
+      // The token is saved in localstorage.
+      const { token } = response.data
+      localStorage.setItem("jwt", token)
+      // The token is decoded.
+      const decoded = jwt_decode(token)
+      // The Account is set in App's state to be the decoded token.
+      setCurrentAccount(decoded)
       const options = {
         headers: {
           Authorization: token,
         },
-      };
-      axios
-        .get(
-          `${process.env.REACT_APP_SERVER_URL}/api-v1/account/${decoded.id}`,
-          options
-        )
+      }
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/account/${decoded.id}`,options)
         .then((response) => {
-          setProfiles(response.data.profiles);
-          setTasks(response.data.tasks);
+          setProfiles(response.data.profiles)
+          setTasks(response.data.tasks)
         })
         .catch((err) => {
-          console.log(err);
-        });
+          console.log(err)
+        })
     } catch (err) {
-      console.warn(err);
+      console.warn(err)
       if (err.response) {
         if (err.response.status === 400) {
-          setMsg(err.response.data.msg);
+          setMsg(err.response.data.msg)
         } else {
-          navi('/notfound', {replace:true})
+          navi("/notfound", { replace: true })
         }
       }
     }
-  };
+  }
 
-  // conditionally render a navigate component
+  // A navigate component is conditionally rendered if the current account is valid.
   if (currentAccount) {
-    return <Navigate to="/profileselection" />;
+    return <Navigate to="/profileselection" />
   }
 
   return (
