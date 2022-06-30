@@ -47,11 +47,11 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
           {/* {currentAccount.name} */}
         </div>
 
-        <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white p-8">
+        <h1 className="text-white text-center tracking-tight text-5xl self-center font-semibold dark:text-white p-6">
           User Profiles
         </h1>
 
-        <h3 className="text-white tracking-tight leading-6 text-2xl pt-16 h-18 pb-10">
+        <h3 className="text-white tracking-tight leading-6 text-2xl h-24 pb-10">
           Create a new profile and choose your color icon.
         </h3>
 
