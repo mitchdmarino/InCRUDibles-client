@@ -66,6 +66,7 @@ export default function Details({ currentAccount, handleLogout, profiles, setPro
             initialForm={{ name: "", color: "red" }}
             handleSubmit={handleCreateProfile}
             setProfiles={setProfiles}
+            isCreate={true}
           />
         </div>
         <h2>{profileList}</h2>

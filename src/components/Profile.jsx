@@ -83,6 +83,7 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
                 color: profile.color,
               }}
               handleSubmit={handleEditProfile}
+              isCreate={false}
             />
             </div>
           ) : (
@@ -90,13 +91,19 @@ export default function Profile ({profile, setProfiles, showEdit , setCurrentPro
           )}
           {showEdit ? (
             <div className="edit-container flex justify-center">
-              <button
-                className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white h-10 w-[80px] mt-2"
-                onClick={() => setShowForm(!showForm)}
-              >
-                {showForm ? "Cancel" : "Edit"}
-              </button>
-
+              
+              {
+                showForm ? 
+                <button className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white h-10 w-[80px] mt-2"
+                onClick={() => setShowForm(!showForm)}>
+                  Cancel
+                </button>: 
+                <button className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white h-10 w-[80px] mt-2"
+                onClick={() => setShowForm(!showForm)}>
+                  Edit
+                </button>
+              }
+              
               {showForm ? (
                 <button
                   className="rounded-full font-semibold bg-white hover:bg-blue-500 hover:text-white  h-10 w-[80px] mt-2"
