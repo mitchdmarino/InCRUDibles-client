@@ -3,7 +3,7 @@ import ProfileForm from "../ProfileForm";
 import { useState, useEffect } from "react";
 import Task from "../Task";
 import Date from "../Date";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export default function TasksPage({
   initialForm,
@@ -12,10 +12,10 @@ export default function TasksPage({
   profiles,
   currentProfile,
 }) {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const [form, setForm] = useState({ completed: false, initialForm });
   const [msg, setMsg] = useState();
-  
+
   const msgArr = [
     "You Should Get These Done...",
     "You miss 100% of the shots you don't take -Michael Scott",
@@ -23,7 +23,7 @@ export default function TasksPage({
     "That's a long list. It would be a shame if it kept growing.",
     "Just pick a task and do it already.",
     "You're mom would be ashamed if she saw this list.",
-    "Don't be a Disappointment"
+    "Don't be a Disappointment",
   ];
 
   useEffect(() => {
@@ -67,15 +67,15 @@ export default function TasksPage({
         setForm({ description: "", completed: false });
       })
 
-      .catch(err => {
-        console.warn(err)
-        navigate('/notfound', {replace:true})
+      .catch((err) => {
+        console.warn(err);
+        navigate("/notfound", { replace: true });
       });
   };
 
   const taskList = tasks.map((task, idx) => {
     return (
-      <tr className="rounded-full border-white border-2 p-4 m-4">
+      <tr key={task._id} className="rounded-full border-white border-2 p-4 m-4">
         <Task
           key={`task${task._id}`}
           task={task}
@@ -84,7 +84,7 @@ export default function TasksPage({
           setTasks={setTasks}
         />
       </tr>
-    )
+    );
   });
 
   return (
@@ -133,11 +133,11 @@ export default function TasksPage({
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              stroke-width="2"
+              strokeWidth="2"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
@@ -147,7 +147,7 @@ export default function TasksPage({
           Your list for: <Date />
         </h2>
         <div className="text-white text-[20px] font-semibold p-8">
-          <table class="table-auto mx-auto bg-gradient-to-r from-pink-400 to-yellow-400 border-2">
+          <table className="table-auto mx-auto bg-gradient-to-r from-pink-400 to-yellow-400 border-2">
             <thead>
               <tr>
                 <th className="w-[300px] text-3xl p-2">Complete</th>
@@ -161,5 +161,5 @@ export default function TasksPage({
       </div>
       <h3 className="text-white tracking-tight text-4xl self-center font-semibold dark:text-white p-8 flex justify-end"></h3>
     </main>
-  )
+  );
 }
